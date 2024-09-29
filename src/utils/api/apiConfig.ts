@@ -15,7 +15,16 @@ API.interceptors.request.use(
     return config;
   },
   (error) => {
-    Promise.reject(error);
+    return Promise.resolve(error);
+  }
+);
+
+API.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    return Promise.resolve(error);
   }
 );
 

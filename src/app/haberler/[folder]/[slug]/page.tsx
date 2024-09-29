@@ -12,6 +12,7 @@ import LastNewsRightBar from "@/components/elements/news/LastNewsRightBar";
 import EarthquakeDataTableMini from "@/components/elements/earthquake/EarthquakeDetailTableMini";
 import Breadcrumb from "@/components/theme/Breadcrumb";
 import { INews } from "@/utils/interfaces/news";
+import { notFound } from "next/navigation";
 
 interface INewsPage {
   params: {
@@ -56,7 +57,9 @@ export default async function NewsDetail(props: INewsPage) {
     },
   };
 
-  if (!data) return null;
+  if (!data) {
+    return notFound();
+  }
 
   return (
     <>

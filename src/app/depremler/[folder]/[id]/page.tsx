@@ -9,6 +9,7 @@ import SeoData from "@/utils/helpers/seo";
 import ShareLeftSide from "@/components/elements/share/ShareLeftSide";
 import ShareBottomSide from "@/components/elements/share/ShareBottomSide";
 import Breadcrumb from "@/components/theme/Breadcrumb";
+import { notFound } from "next/navigation";
 
 interface IEarthquakePage {
   params: {
@@ -32,10 +33,9 @@ export async function generateMetadata({ params }: IEarthquakePage) {
 export default async function EarthquakeData({ params }: IEarthquakePage) {
   const { id, folder } = params;
   const { data } = await API.get(`/earthquakes/${folder}/${id}`);
-  const canonical = `${SITE_URL}/depremler/${folder}/${data?.eventId}`;
-  // // const metaImage = `${API_URL}${data?.image}`;
 
-  const logo = SITE_URL + "/assets/img/logo/logo.png";
+  const canonical = `${SITE_URL}/depremler/${folder}/${data?.eventId}`;
+  const metaImage = `${API_URL}${data?.image}`;
   const title = `${data?.location} ${data?.magnitude} Büyüklüğünde Deprem`;
   const description = `${data?.location} bölgesinde ${data?.magnitude} büyüklüğünde deprem meydana geldi. Deprem hakkında detaylı bilgiyi buradan öğrenebilirsiniz.`;
 
@@ -44,7 +44,7 @@ export default async function EarthquakeData({ params }: IEarthquakePage) {
     "@type": "NewsArticle",
     headline: title,
     datePublished: data?.eventDate || "",
-    image: logo,
+    image: metaImage,
     articleBody: description,
     author: {
       "@type": "Person",
@@ -56,7 +56,9 @@ export default async function EarthquakeData({ params }: IEarthquakePage) {
     },
   };
 
-  if (!data) return <div>Yükleniyor...</div>;
+  if (!data) {
+    return notFound();
+  }
 
   return (
     <>
