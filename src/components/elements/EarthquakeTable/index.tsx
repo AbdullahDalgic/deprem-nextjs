@@ -172,7 +172,7 @@ export default function EarthquakeTable({
                     </Link>
                   </TableCell>
                   <TableCell align="right">{row.magnitude}</TableCell>
-                  <TableCell align="right">{row.depth}</TableCell>
+                  <TableCell align="right">{row.depth} km</TableCell>
                   <TableCell align="right">
                     {dayjs(row.eventDate).format("DD MMMM YYYY")}
                     {" - "}
