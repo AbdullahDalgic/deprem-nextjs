@@ -1,6 +1,5 @@
 // import Layout from "@/components/layout/Layout";
 import API from "@/utils/api/apiConfig";
-import Head from "next/head";
 import EarthquakeTable from "@/components/elements/EarthquakeTable";
 import SectionTitle from "@/components/elements/SectionTitle";
 import { Container, Grid2 } from "@mui/material";

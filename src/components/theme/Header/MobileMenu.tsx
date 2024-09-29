@@ -1,6 +1,5 @@
 import { SOCIAL } from "@/utils/constants";
 import Link from "next/link";
-import { useState } from "react";
 import Image from "next/image";
 
 interface IMobileMenu {
@@ -8,24 +7,24 @@ interface IMobileMenu {
 }
 
 const MobileMenu = ({ handleMobileMenuClose }: IMobileMenu) => {
-  const [isActive, setIsActive] = useState({
-    status: false,
-    key: "",
-  });
+  // const [isActive, setIsActive] = useState({
+  //   status: false,
+  //   key: "",
+  // });
 
-  const handleToggle = (key: string) => {
-    if (isActive.key === key) {
-      setIsActive({
-        ...isActive,
-        status: false,
-      });
-    } else {
-      setIsActive({
-        status: true,
-        key,
-      });
-    }
-  };
+  // const handleToggle = (key: string) => {
+  //   if (isActive.key === key) {
+  //     setIsActive({
+  //       ...isActive,
+  //       status: false,
+  //     });
+  //   } else {
+  //     setIsActive({
+  //       status: true,
+  //       key,
+  //     });
+  //   }
+  // };
 
   return (
     <>

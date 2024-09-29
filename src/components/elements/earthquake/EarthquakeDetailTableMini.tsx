@@ -8,18 +8,19 @@ import {
 } from "@mui/material";
 import dayjs from "dayjs";
 import Link from "next/link";
-import Image from "next/image";
 import { FaGoogle, FaYandexInternational } from "react-icons/fa";
 import { SiOpenstreetmap } from "react-icons/si";
 import { IEarthquake } from "@/utils/interfaces/earthquakes";
 
 interface IEarthquakeDetailTableMini {
-  earthquake: IEarthquake;
+  earthquake?: IEarthquake;
 }
 
 const EarthquakeDetailTableMini = ({
   earthquake,
 }: IEarthquakeDetailTableMini) => {
+  if (!earthquake) return null;
+
   return (
     <TableContainer>
       <Table size="small">

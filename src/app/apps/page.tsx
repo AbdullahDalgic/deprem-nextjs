@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { Container, Grid2, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";

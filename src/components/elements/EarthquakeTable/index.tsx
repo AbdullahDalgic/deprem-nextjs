@@ -13,6 +13,7 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
 import dayjs from "dayjs";
+import { IEarthquake } from "@/utils/interfaces/earthquakes";
 
 function descendingComparator(a: any, b: any, orderBy: any) {
   if (b[orderBy] < a[orderBy]) {
@@ -30,14 +31,22 @@ function getComparator(order: any, orderBy: any) {
     : (a: any, b: any) => -descendingComparator(a, b, orderBy);
 }
 
-export default function EarthquakeTable({ earthquakes, pagination }: any) {
+interface IEarthquakeTable {
+  earthquakes: IEarthquake[];
+  pagination: boolean;
+}
+
+export default function EarthquakeTable({
+  earthquakes,
+  pagination,
+}: IEarthquakeTable) {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(20);
 
   const data = useMemo(() => {
-    return earthquakes.map((earthquake: any) => {
+    return earthquakes.map((earthquake) => {
       return {
         eventId: earthquake.eventId,
         eventDate: earthquake.eventDate,

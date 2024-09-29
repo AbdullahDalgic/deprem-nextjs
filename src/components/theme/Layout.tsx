@@ -35,7 +35,7 @@ export default function Layout({
   const pathname = usePathname();
   const [loading, setLoading] = useState(false);
   const { theme: themeMode } = useTheme();
-  let theme = createTheme({
+  const theme = createTheme({
     palette: {
       mode: themeMode == "dark-theme" ? "dark" : "light",
     },
@@ -54,7 +54,9 @@ export default function Layout({
     if (!loading) return;
     try {
       NEXT_API.get("/visitor-log");
-    } catch (error) {}
+    } catch (error) {
+      console.error("Failed to log visitor data.");
+    }
   }, [loading, pathname]);
 
   const handleMobileMenuOpen = () => {
@@ -107,14 +109,15 @@ export default function Layout({
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-NX6P3CKR55"
         strategy="lazyOnload"
+        id="google-analytics-script"
       />
-      <Script strategy="lazyOnload">
+      <Script strategy="lazyOnload" id="google-analytics">
         {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-NX6P3CKR55');
-          `}
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-NX6P3CKR55');
+        `}
       </Script>
     </ThemeProvider>
   );

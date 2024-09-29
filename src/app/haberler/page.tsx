@@ -1,4 +1,3 @@
-import Layout from "@/components/theme/Layout";
 import API from "@/utils/api/apiConfig";
 import SectionTitle from "@/components/elements/SectionTitle";
 import BoxItem from "@/components/elements/news/BoxItem";

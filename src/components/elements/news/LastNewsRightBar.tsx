@@ -22,7 +22,7 @@ const LastNewsRightBar = () => {
 
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
         {news &&
-          news?.map((item: any, index: number) => {
+          news?.map((item, index) => {
             const date = dayjs(item?.created_at).format("YYYY-MM-DD");
             const url = `/haberler/${date}/${item?.slug}`;
             return (

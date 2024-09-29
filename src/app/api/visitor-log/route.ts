@@ -23,16 +23,6 @@ export async function GET(request: NextRequest) {
     const reader = await Reader.open(dbPath);
     const { city, country } = reader.city(ipAddress);
 
-    const findCity = () => {
-      let _city = city?.names["en"];
-      return _city;
-    };
-
-    const findCountry = () => {
-      let _country = country?.names?.["en"];
-      return _country;
-    };
-
     const data = {
       ip_address: ipAddress,
       user_agent: userAgent,
@@ -47,8 +37,8 @@ export async function GET(request: NextRequest) {
       device_type: result?.device?.type || "Unknown",
       device_vendor: result?.device?.vendor || "Unknown",
       cpu_architecture: result?.cpu?.architecture || "Unknown",
-      city: findCity() || "Unknown",
-      country: findCountry() || "Unknown",
+      city: city?.names["en"] || "Unknown",
+      country: country?.names?.["en"] || "Unknown",
     };
 
     // Laravel API'sine ziyaretçi verilerini gönderme

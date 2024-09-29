@@ -56,7 +56,7 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
                 <div className="footer__social">
                   <ul className="list-wrap">
                     {Object.entries(SOCIAL).map(([key, value], i) => (
-                      <li key={key}>
+                      <li key={i}>
                         <Link href={value} legacyBehavior>
                           <a target="_blank" rel="noreferrer" aria-label={key}>
                             <i className={`fab fa-${key}`} /> {key}{" "}

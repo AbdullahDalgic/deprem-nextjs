@@ -1,13 +1,13 @@
 import React from "react";
-import Head from "next/head";
 import Container from "@mui/material/Container";
 import SectionTitle from "@/components/elements/SectionTitle";
 import EarthquakeTable from "@/components/elements/EarthquakeTable";
-import API from "@/utils/api/apiConfig";
+import { INews } from "@/utils/interfaces/news";
+import { IEarthquake } from "@/utils/interfaces/earthquakes";
 
 interface IHome {
-  last_earthquakes: any;
-  news: any[];
+  last_earthquakes: IEarthquake[];
+  news: INews[];
 }
 
 const HomeComponent = ({ last_earthquakes }: IHome) => {

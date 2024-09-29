@@ -16,9 +16,6 @@ export default function Header3({
   scroll,
   handleMobileMenuOpen,
   handleMobileMenuClose,
-  langToggle,
-  handleLangToggle,
-  handleSidebarClose,
   handleSidebarOpen,
 }: IHeader3) {
   return (

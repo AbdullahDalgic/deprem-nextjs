@@ -7,10 +7,10 @@ import { INews } from "@/utils/interfaces/news";
 
 interface IBoxItem {
   news: INews;
-  index: number;
+  index?: number;
 }
 
-const BoxItem = ({ news, index }: IBoxItem) => {
+const BoxItem = ({ news }: IBoxItem) => {
   const date = dayjs(news?.created_at).format("YYYY-MM-DD");
   const url = `/haberler/${date}/${news?.slug}`;
 
