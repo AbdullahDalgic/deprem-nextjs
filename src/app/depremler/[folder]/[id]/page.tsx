@@ -77,7 +77,8 @@ export default async function EarthquakeData({ params }: IEarthquakePage) {
         <Container maxWidth="lg" sx={{ mt: 2 }}>
           <Grid2 container spacing={2}>
             <Grid2
-              size={{ lg: 1, md: 1, sm: 12 }}
+              size={{ lg: 1, md: 1, sm: 0, xs: 0 }}
+              display={{ md: "flex", sm: "none", xs: "none" }}
               className="blog-details-social"
             >
               <ShareLeftSide canonical={canonical} title={title} />

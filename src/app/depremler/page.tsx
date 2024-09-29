@@ -17,7 +17,9 @@ export async function generateMetadata() {
 
 export default async function Earthquakes() {
   const { data } = await API.get("/earthquakes");
-  const earthquakes: IEarthquake[] = data?.data || [];
+  const earthquakes: IEarthquake[] = data || [];
+
+  if (!data) return null;
 
   return (
     <>

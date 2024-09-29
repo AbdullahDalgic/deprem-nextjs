@@ -20,7 +20,7 @@ export default async function News() {
   const { data } = await API.get("/news");
   const news: INews[] = data?.data || [];
 
-  if (!news) return null;
+  if (!data) return null;
 
   return (
     <>
