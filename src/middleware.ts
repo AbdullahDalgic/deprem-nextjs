@@ -16,6 +16,11 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  if (request.nextUrl.pathname.startsWith("/kurumsal/gizlilik-sozlesmesi")) {
+    const url = "/sayfalar/gizlilik-politikasi";
+    return NextResponse.redirect(new URL(url, request.url), 302);
+  }
+
   if (request.nextUrl.pathname === "/eklenti") {
     return NextResponse.redirect(new URL("/apps", request.url), 302);
   }
