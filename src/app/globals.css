@@ -35,3 +35,7 @@ body {
   color: var(--foreground);
   border-color: var(--foreground);
 }
+
+figure [data-rmiz]{
+  width: 100%;
+}

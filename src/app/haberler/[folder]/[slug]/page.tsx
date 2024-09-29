@@ -111,6 +111,7 @@ export default async function NewsDetail(props: INewsPage) {
                       justifyContent: "center",
                       alignItems: "center",
                       maxHeight: "300px",
+                      width: "100%",
                       overflow: "hidden",
                     }}
                   >
