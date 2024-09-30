@@ -1,11 +1,13 @@
 import { Roboto } from "next/font/google";
 import Layout from "@/components/theme/Layout";
 import Hydration from "@/components/Hydration";
+import dayjs from "dayjs";
 
 import "./globals.css";
 import "../../public/assets/css/fontawesome-all.min.css";
 import "../../public/assets/css/main.css";
 import "react-medium-image-zoom/dist/styles.css";
+import "dayjs/locale/tr";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -19,6 +21,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  dayjs.locale("tr");
+
   return (
     <html lang="tr">
       <body className={roboto.className}>

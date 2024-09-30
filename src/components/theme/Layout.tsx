@@ -45,6 +45,7 @@ export default function Layout({
   });
 
   useEffect(() => {
+    dayjs.locale("tr");
     setTimeout(() => {
       setLoading(true);
     }, 1000);
