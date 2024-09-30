@@ -1,4 +1,3 @@
-"use server";
 import { Breadcrumbs, Container, Typography } from "@mui/material";
 import Link from "next/link";
 import Script from "next/script";
@@ -11,7 +10,7 @@ interface BreadcrumbProps {
   breadcrumbPostTitle?: string;
 }
 
-export default async function Breadcrumb({
+export default function Breadcrumb({
   breadcrumbCategory,
   breadcrumbCategoryLink,
   breadcrumbPostUrl,

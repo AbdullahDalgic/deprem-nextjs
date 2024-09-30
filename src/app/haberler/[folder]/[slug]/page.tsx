@@ -23,21 +23,23 @@ interface INewsPage {
 
 export const generateMetadata = async (props: INewsPage) => {
   const { folder, slug } = props.params;
-  const { data }: { data: INews } = await API.get(`/news/${folder}/${slug}`);
+  const date = dayjs(folder).format("YYYY-MM-DD");
+  const { data }: { data: INews } = await API.get(`/news/${date}/${slug}`);
 
   return SeoData({
     title: data?.title,
     description: data?.meta_description,
     image: `${API_URL}${data?.image}`,
-    url: `${SITE_URL}/haberler/${folder}/${slug}`,
+    url: `${SITE_URL}/haberler/${date}/${slug}`,
   });
 };
 
 export default async function NewsDetail(props: INewsPage) {
   const { folder, slug } = props.params;
-  const { data }: { data: INews } = await API.get(`/news/${folder}/${slug}`);
+  const date = dayjs(folder).format("YYYY-MM-DD");
+  const { data }: { data: INews } = await API.get(`/news/${date}/${slug}`);
 
-  const canonical = `${SITE_URL}/haberler/${folder}/${slug}`;
+  const canonical = `${SITE_URL}/haberler/${date}/${slug}`;
   const metaImage = `${API_URL}${data?.image}`;
 
   const jsonLd = {
