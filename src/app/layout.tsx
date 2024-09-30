@@ -2,6 +2,8 @@ import { Roboto } from "next/font/google";
 import Layout from "@/components/theme/Layout";
 import Hydration from "@/components/Hydration";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
 import "./globals.css";
 import "../../public/assets/css/fontawesome-all.min.css";
@@ -22,6 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   dayjs.locale("tr");
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+  dayjs.tz.setDefault("Europe/Istanbul");
+  process.env.TZ = "Europe/Istanbul";
 
   return (
     <html lang="tr">
