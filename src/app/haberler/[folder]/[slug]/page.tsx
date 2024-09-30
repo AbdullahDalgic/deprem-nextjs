@@ -38,6 +38,7 @@ export default async function NewsDetail(props: INewsPage) {
   const { folder, slug } = props.params;
   const date = dayjs(folder).format("YYYY-MM-DD");
   const { data }: { data: INews } = await API.get(`/news/${date}/${slug}`);
+  dayjs.locale("tr");
 
   const canonical = `${SITE_URL}/haberler/${date}/${slug}`;
   const metaImage = `${API_URL}${data?.image}`;

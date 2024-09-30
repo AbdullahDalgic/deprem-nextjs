@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: IEarthquakePage) {
 export default async function EarthquakeData({ params }: IEarthquakePage) {
   const { id, folder } = params;
   const { data } = await API.get(`/earthquakes/${folder}/${id}`);
+  dayjs.locale("tr");
 
   const canonical = `${SITE_URL}/depremler/${folder}/${data?.eventId}`;
   const metaImage = `${API_URL}${data?.image}`;
