@@ -67,6 +67,39 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
                   </ul>
                 </div>
               </Grid2>
+
+              <Grid2 size={{ xs: 12, md: 12 }}>
+                <Box display={"flex"} flexDirection={"column"} gap={2}>
+                  <Typography variant="body2" component={"p"}>
+                    Depremler, yaşamı etkileyen ciddi doğal afetlerdir. Bu
+                    nedenle, toplumu bilgilendirmek ve hazırlıklı hale getirmek
+                    amacıyla geliştirdiğimiz bu açık kaynak yazılımlar ile,
+                    depremler hakkında en güncel ve doğru bilgileri sağlamayı
+                    hedeflemektedir. Ayrıca, bu platforma entegre ettiğimiz{" "}
+                    <Link href="/apps" legacyBehavior target="_blank">
+                      <a>tarayıcı uzantısı</a>
+                    </Link>{" "}
+                    sayesinde kullanıcılarımız, deprem haberlerine anlık erişim
+                    sağlayabilir.
+                  </Typography>
+
+                  <Typography variant="body2" component={"p"}>
+                    Sosyal medya hesaplarımız (Instagram, Facebook, Twitter)
+                    aracılığıyla da topluluk ile etkileşimde bulunarak, deprem
+                    güvenliği ve farkındalığı konusunda bilinçlendirme
+                    faaliyetleri yürütmekteyiz. Amacımız, her bireyin bu konuda
+                    bilgi sahibi olması ve olası bir deprem durumuna karşı
+                    hazırlıklı olmasını sağlamak.
+                  </Typography>
+
+                  <Typography variant="body2" component={"p"}>
+                    Birlikte hareket ederek daha güvenli bir toplum oluşturmayı
+                    umuyoruz. Projemiz hakkında daha fazla bilgi almak veya
+                    katkıda bulunmak isterseniz, lütfen sosyal medya
+                    hesaplarımızı takip edin veya iletişime geçin.
+                  </Typography>
+                </Box>
+              </Grid2>
             </Grid2>
           </div>
           <div className="footer__copyright">
