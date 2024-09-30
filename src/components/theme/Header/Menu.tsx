@@ -74,9 +74,6 @@ export default function Menu({
               <li>
                 <Link href="/apps">Uygulamalar</Link>
               </li>
-              <li>
-                <Link href="/iletisim">İletişim</Link>
-              </li>
             </ul>
           </Box>
           <div className="tgmenu__action">

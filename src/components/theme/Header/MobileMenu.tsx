@@ -77,9 +77,6 @@ const MobileMenu = ({ handleMobileMenuClose }: IMobileMenu) => {
               <li>
                 <Link href="/apps">Uygulamalar</Link>
               </li>
-              <li>
-                <Link href="/iletisim">İletişim</Link>
-              </li>
             </ul>
           </div>
           <div className="social-links">
