@@ -5,6 +5,7 @@
 
 export const API_URL = "https://api.deprem.wiki";
 export const SITE_URL = "https://www.deprem.wiki";
+export const EMAIL = "info@deprem.wiki";
 
 export const SOCIAL = {
   facebook: "https://facebook.com/depremwiki",
