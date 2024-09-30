@@ -4,6 +4,9 @@ import { API_URL } from "@/utils/constants";
 import dayjs from "dayjs";
 import Image from "next/image";
 import { INews } from "@/utils/interfaces/news";
+import { PiEyesFill } from "react-icons/pi";
+import { FaRegCommentDots } from "react-icons/fa";
+import { IoShareSocialSharp } from "react-icons/io5";
 
 interface IBoxItem {
   news: INews;
@@ -17,9 +20,9 @@ const BoxItem = ({ news }: IBoxItem) => {
   return (
     <div className="trending__post">
       <div className="trending__post-thumb tgImage__hover">
-        <Link href="/#" className="addWish">
+        {/* <Link href="/#" className="addWish">
           <i className="fal fa-heart" />
-        </Link>
+        </Link> */}
         <Link href={url}>
           <Image
             src={`${API_URL}${news?.image_map}`}
@@ -53,15 +56,15 @@ const BoxItem = ({ news }: IBoxItem) => {
         </h4>
         <ul className="post__activity list-wrap">
           <li>
-            <i className="fal fa-signal" /> {news.views}
+            <PiEyesFill /> {news.views}
           </li>
           <li>
             <Link href={url}>
-              <i className="fal fa-comment-dots" /> 0
+              <FaRegCommentDots /> 0
             </Link>
           </li>
           <li>
-            <i className="fal fa-share-alt" /> 0
+            <IoShareSocialSharp /> 0
           </li>
         </ul>
       </div>
