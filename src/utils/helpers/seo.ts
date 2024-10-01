@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { SITE_URL } from "../constants";
+import { API_URL, SITE_URL } from "../constants";
 
 interface ISeo {
   title?: string;
@@ -35,11 +35,26 @@ export default async function SeoData(data: ISeo) {
     authors: {
       name: author,
     },
+    category: "news",
+    classification: "news",
+    applicationName: "Deprem Wiki",
     creator: author,
     alternates: {
       canonical: {
         title: title,
         url: url,
+      },
+      types: {
+        "application/rss+xml": [
+          {
+            title: "Deprem Wiki Haberler",
+            url: `${API_URL}/feeds/news`,
+          },
+          {
+            title: "Deprem Wiki Depremler",
+            url: `${API_URL}/feeds/earthquakes`,
+          },
+        ],
       },
     },
     robots: "index, follow",
@@ -56,6 +71,10 @@ export default async function SeoData(data: ISeo) {
       title: title,
       description: description,
       images: image,
+    },
+    icons: {
+      icon: `${SITE_URL}/assets/img/logo/logo.png`,
+      apple: `${SITE_URL}/assets/img/logo/logo.png`,
     },
     verification: {},
   };
