@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: IEarthquakePage) {
   return SeoData({
     title: `${data?.location} ${data?.magnitude} Büyüklüğünde Deprem`,
     description: `${data?.location} bölgesinde ${data?.magnitude} büyüklüğünde deprem meydana geldi. Deprem hakkında detaylı bilgiyi buradan öğrenebilirsiniz.`,
-    image: `${API_URL}${data?.image}`,
     url: `${SITE_URL}/depremler/${folder}/${data?.eventId}`,
   });
 }
