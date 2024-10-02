@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
-import ThemeSwitch from "@/components/elements/ThemeSwitch";
+// import ThemeSwitch from "@/components/elements/ThemeSwitch";
 
 interface IMenu {
   handleMobileMenuOpen: () => void;
@@ -78,9 +78,9 @@ export default function Menu({
           </Box>
           <div className="tgmenu__action">
             <ul className="list-wrap">
-              <li className="mode-switcher">
+              {/* <li className="mode-switcher">
                 <ThemeSwitch />
-              </li>
+              </li> */}
 
               <li className="header-search">
                 <Link href="#" aria-label="search">
