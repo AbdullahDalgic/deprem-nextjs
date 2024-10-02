@@ -35,7 +35,7 @@ export default async function EarthquakeData({ params }: IEarthquakePage) {
   dayjs.locale("tr");
 
   const canonical = `${SITE_URL}/depremler/${folder}/${data?.eventId}`;
-  const metaImage = `${API_URL}${data?.image}`;
+  const metaImage = `${SITE_URL}/assets/img/logo/logo.png`;
   const title = `${data?.location} ${data?.magnitude} Büyüklüğünde Deprem`;
   const description = `${data?.location} bölgesinde ${data?.magnitude} büyüklüğünde deprem meydana geldi. Deprem hakkında detaylı bilgiyi buradan öğrenebilirsiniz.`;
 
