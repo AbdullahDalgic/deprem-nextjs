@@ -33,6 +33,8 @@ export default async function SeoData(data: ISeo) {
     preload = [],
   } = data;
 
+  const preloadUrls = ["https://fonts.gstatic.com/", API_URL, ...preload];
+
   const metaData: Metadata = {
     title: title,
     description: description,
@@ -62,7 +64,9 @@ export default async function SeoData(data: ISeo) {
       },
     },
     other: {
-      preload: [API_URL, ...preload],
+      preload: preloadUrls,
+      "dns-prefetch": preloadUrls,
+      preconnect: preloadUrls,
     },
     robots: robots ? "index, follow" : "noindex, nofollow",
     openGraph: {
