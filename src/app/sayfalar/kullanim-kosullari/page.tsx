@@ -8,7 +8,7 @@ export const generateMetadata = async () => {
   return SeoData({
     title: "Kullanım Koşulları",
     description: "Deprem.wiki kullanım koşulları",
-    url: `${SITE_URL}/kullanim-kosullari`,
+    url: `${SITE_URL}/sayfalar/kullanim-kosullari`,
     robots: false,
   });
 };

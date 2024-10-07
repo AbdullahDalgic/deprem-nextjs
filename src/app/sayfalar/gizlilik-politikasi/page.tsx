@@ -8,7 +8,7 @@ export const generateMetadata = async () => {
   return SeoData({
     title: "Gizlilik Politikası",
     description: "Deprem.wiki gizlilik politikası",
-    url: `${SITE_URL}/gizlilik-politikasi`,
+    url: `${SITE_URL}/sayfalar/gizlilik-politikasi`,
     robots: false,
   });
 };
