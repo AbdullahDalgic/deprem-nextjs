@@ -120,6 +120,24 @@ export default function Layout({
           gtag('config', 'G-NX6P3CKR55');
         `}
       </Script>
+
+      <Script
+        strategy="lazyOnload"
+        id="google-news"
+        src="https://news.google.com/swg/js/v1/swg-basic.js"
+      />
+      <Script strategy="lazyOnload" id="google-news-script">
+        {`
+          (self.SWG_BASIC = self.SWG_BASIC || []).push( basicSubscriptions => {
+            basicSubscriptions.init({
+              type: "NewsArticle",
+              isPartOfType: ["Product"],
+              isPartOfProductId: "CAowkNq1DA:openaccess",
+              clientOptions: { theme: "light", lang: "tr" },
+            });
+          });
+        `}
+      </Script>
     </ThemeProvider>
   );
 }
