@@ -9,12 +9,16 @@ import { Box, Grid2, Typography } from "@mui/material";
 import { INews } from "@/utils/interfaces/news";
 
 const LastNewsRightBar = () => {
+  const [loading, setLoading] = React.useState(false);
   const [news, setNews] = React.useState<INews[]>();
   React.useEffect(() => {
-    API.get(`/news?limit=10`).then(({ data }) => {
-      setNews(data?.data);
-    });
-  }, []);
+    setLoading(true);
+    if (loading) {
+      API.get(`/news?limit=10`).then(({ data }) => {
+        setNews(data?.data);
+      });
+    }
+  }, [loading]);
 
   return (
     <div className="widget sidebar-widget widget_categories">
