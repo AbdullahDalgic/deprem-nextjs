@@ -9,6 +9,7 @@ interface ISeo {
   meta_description?: string;
   image?: string;
   url?: string;
+  robots?: boolean;
   created_at?: string;
   updated_at?: string;
 }
@@ -27,6 +28,7 @@ export default async function SeoData(data: ISeo) {
     image = `${SITE_URL}/assets/img/logo/logo.png`,
     author = "Deprem Wiki",
     url = SITE_URL,
+    robots = true,
   } = data;
 
   const metaData: Metadata = {
@@ -57,7 +59,7 @@ export default async function SeoData(data: ISeo) {
         ],
       },
     },
-    robots: "index, follow",
+    robots: robots ? "index, follow" : "noindex, nofollow",
     openGraph: {
       title: title,
       description: description,

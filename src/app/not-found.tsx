@@ -9,6 +9,7 @@ export async function generateMetadata() {
     title: "404 Sayfa Bulunamadı",
     description: "Aradığınız sayfa bulunamadı.",
     image: "/assets/img/others/404.png",
+    robots: false,
   });
 }
 

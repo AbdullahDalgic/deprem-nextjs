@@ -9,6 +9,7 @@ export const generateMetadata = async () => {
     title: "Gizlilik Politikası",
     description: "Deprem.wiki gizlilik politikası",
     url: `${SITE_URL}/gizlilik-politikasi`,
+    robots: false,
   });
 };
 

@@ -10,6 +10,7 @@ export const generateMetadata = async () => {
     title: "İletişim",
     description: "Deprem.wiki iletişim sayfası",
     url: `${SITE_URL}/iletisim`,
+    robots: false,
   });
 };
 

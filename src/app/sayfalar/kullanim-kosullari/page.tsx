@@ -9,6 +9,7 @@ export const generateMetadata = async () => {
     title: "Kullanım Koşulları",
     description: "Deprem.wiki kullanım koşulları",
     url: `${SITE_URL}/kullanim-kosullari`,
+    robots: false,
   });
 };
 

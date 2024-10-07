@@ -9,6 +9,7 @@ export const generateMetadata = async () => {
     title: "Geliştiriciler",
     description: "Deprem.wiki geliştiriciler sayfası",
     url: `${SITE_URL}/gelistiriciler`,
+    robots: false,
   });
 };
 
