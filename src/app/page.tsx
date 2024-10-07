@@ -9,9 +9,17 @@ import BoxItem from "@/components/elements/news/BoxItem";
 import SeoData from "@/utils/helpers/seo";
 import { IEarthquake } from "@/utils/interfaces/earthquakes";
 import { INews } from "@/utils/interfaces/news";
+import { API_URL } from "@/utils/constants";
 
 export async function generateMetadata() {
-  return SeoData({});
+  const { data = [] } = await API.get("/news_home");
+  // 3 item
+  const preloadImages = data?.news
+    ?.slice(0, 3)
+    .map((item: INews) => `${API_URL}${item?.image}`);
+  return SeoData({
+    preload: preloadImages,
+  });
 }
 
 export default async function Home() {

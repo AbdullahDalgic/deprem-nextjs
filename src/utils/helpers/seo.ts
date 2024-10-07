@@ -12,6 +12,7 @@ interface ISeo {
   robots?: boolean;
   created_at?: string;
   updated_at?: string;
+  preload?: string[];
 }
 
 export default async function SeoData(data: ISeo) {
@@ -29,6 +30,7 @@ export default async function SeoData(data: ISeo) {
     author = "Deprem Wiki",
     url = SITE_URL,
     robots = true,
+    preload = [],
   } = data;
 
   const metaData: Metadata = {
@@ -58,6 +60,9 @@ export default async function SeoData(data: ISeo) {
           },
         ],
       },
+    },
+    other: {
+      preload: [API_URL, ...preload],
     },
     robots: robots ? "index, follow" : "noindex, nofollow",
     openGraph: {

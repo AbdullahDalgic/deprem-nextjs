@@ -31,6 +31,7 @@ export const generateMetadata = async (props: INewsPage) => {
     description: data?.meta_description,
     image: `${API_URL}${data?.image}`,
     url: `${SITE_URL}/haberler/${date}/${slug}`,
+    preload: [`${API_URL}${data?.image}`],
   });
 };
 
@@ -125,7 +126,7 @@ export default async function NewsDetail(props: INewsPage) {
                         style={{ width: "100%", objectFit: "cover" }}
                         width={700}
                         height={700}
-                        loading="lazy"
+                        loading="eager"
                         sizes="(max-width: 700px) 100vw, 700px"
                       />
                       <figcaption>{data.title}</figcaption>
