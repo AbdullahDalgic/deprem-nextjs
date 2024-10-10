@@ -19,3 +19,5 @@ export const META = {
     "Deprem Wiki, Türkiye ve Dünya'da meydana gelen son depremler hakkında bilgi alabileceğiniz bir platformdur.",
   keywords: "deprem, son depremler, deprem bilgileri, deprem wiki",
 };
+
+export const PAGINATION_LIMIT = 9;
