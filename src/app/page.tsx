@@ -10,8 +10,10 @@ import SeoData from "@/utils/helpers/seo";
 import { IEarthquake } from "@/utils/interfaces/earthquakes";
 import { INews } from "@/utils/interfaces/news";
 import { API_URL } from "@/utils/constants";
+import { unstable_noStore as noStore } from "next/cache";
 
 export async function generateMetadata() {
+  noStore();
   const { data = [] } = await API.get("/news_home");
   // 3 item
   const preloadImages = data?.news

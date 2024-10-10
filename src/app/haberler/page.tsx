@@ -6,6 +6,7 @@ import { SITE_URL } from "@/utils/constants";
 import SeoData from "@/utils/helpers/seo";
 import Breadcrumb from "@/components/theme/Breadcrumb";
 import { INews } from "@/utils/interfaces/news";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const generateMetadata = async () => {
   return SeoData({
@@ -17,6 +18,7 @@ export const generateMetadata = async () => {
 };
 
 export default async function News() {
+  noStore();
   const { data } = await API.get("/news");
   const news: INews[] = data?.data || [];
 

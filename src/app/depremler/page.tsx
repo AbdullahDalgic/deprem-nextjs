@@ -7,6 +7,7 @@ import Breadcrumb from "@/components/theme/Breadcrumb";
 import { SITE_URL } from "@/utils/constants";
 import SeoData from "@/utils/helpers/seo";
 import { IEarthquake } from "@/utils/interfaces/earthquakes";
+import { unstable_noStore as noStore } from "next/cache";
 
 export async function generateMetadata() {
   return SeoData({
@@ -16,6 +17,7 @@ export async function generateMetadata() {
 }
 
 export default async function Earthquakes() {
+  noStore();
   const { data } = await API.get("/earthquakes");
   const earthquakes: IEarthquake[] = data || [];
 
