@@ -25,6 +25,7 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
+  noStore();
   const { data } = await API.get("/news_home");
   const last_earthquakes: IEarthquake[] = data?.last_earthquakes || [];
   const news: INews[] = data?.news || [];
