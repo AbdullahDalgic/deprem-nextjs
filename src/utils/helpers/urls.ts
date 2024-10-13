@@ -8,5 +8,5 @@ export const generateSearchLink = (term: string) => {
   term = term.replace(/ş/g, "s");
   term = term.replace(/ü/g, "u");
 
-  return `/ara?q=${term}`;
+  return `/ara/${term}`;
 };
