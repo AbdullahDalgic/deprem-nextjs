@@ -10,6 +10,7 @@ import ShareLeftSide from "@/components/elements/share/ShareLeftSide";
 import ShareBottomSide from "@/components/elements/share/ShareBottomSide";
 import Breadcrumb from "@/components/theme/Breadcrumb";
 import { notFound } from "next/navigation";
+import { generateSearchLink } from "@/utils/helpers/urls";
 
 interface IEarthquakePage {
   params: {
@@ -126,7 +127,9 @@ export default async function EarthquakeData({ params }: IEarthquakePage) {
                             ?.split(",")
                             .map((tag: string, i: number) => (
                               <li key={i}>
-                                <Link href="#">{tag}</Link>
+                                <Link href={generateSearchLink(tag)}>
+                                  {tag}
+                                </Link>
                               </li>
                             ))}
                         </ul>

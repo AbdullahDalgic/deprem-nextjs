@@ -13,6 +13,7 @@ import EarthquakeDataTableMini from "@/components/elements/earthquake/Earthquake
 import Breadcrumb from "@/components/theme/Breadcrumb";
 import { INews } from "@/utils/interfaces/news";
 import { notFound } from "next/navigation";
+import { generateSearchLink } from "@/utils/helpers/urls";
 
 interface INewsPage {
   params: {
@@ -160,7 +161,9 @@ export default async function NewsDetail(props: INewsPage) {
                             .split(",")
                             .map((tag: string, i: number) => (
                               <li key={i}>
-                                <Link href="#">{tag}</Link>
+                                <Link href={generateSearchLink(tag)}>
+                                  {tag}
+                                </Link>
                               </li>
                             ))}
                         </ul>

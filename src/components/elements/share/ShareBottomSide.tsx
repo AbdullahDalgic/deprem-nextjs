@@ -1,4 +1,5 @@
 "use client";
+import { Typography } from "@mui/material";
 import React from "react";
 import {
   FacebookShareButton,
@@ -18,7 +19,9 @@ const ShareBottomSide = (props: IShareLeftSide) => {
 
   return (
     <div className="blog-details-share">
-      <h6 className="share-title">Paylaş:</h6>
+      <Typography variant="h6" component="p">
+        Paylaş :
+      </Typography>
       <ul className="list-wrap mb-0">
         <li>
           <FacebookShareButton
