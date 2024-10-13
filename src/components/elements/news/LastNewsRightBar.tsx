@@ -5,10 +5,11 @@ import dayjs from "dayjs";
 import API from "@/utils/api/apiConfig";
 import Image from "next/image";
 import { API_URL } from "@/utils/constants";
-import { Box, Grid2, Typography } from "@mui/material";
+import { Box, Grid2, Typography, useMediaQuery } from "@mui/material";
 import { INews } from "@/utils/interfaces/news";
 
 const LastNewsRightBar = () => {
+  const matches = useMediaQuery("(min-width:600px)");
   const [loading, setLoading] = React.useState(false);
   const [news, setNews] = React.useState<INews[]>();
   React.useEffect(() => {
@@ -19,6 +20,8 @@ const LastNewsRightBar = () => {
       });
     }
   }, [loading]);
+
+  if (!matches && !loading) return null;
 
   return (
     <div className="widget sidebar-widget widget_categories">
