@@ -112,7 +112,7 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
                 <Typography variant="body2" component={"p"}>
                   © {new Date().getFullYear()}{" "}
                   <Link href="https://deprem.wiki" legacyBehavior>
-                    <a>deprem.wiki</a>
+                    <a style={{ color: "#777777" }}>deprem.wiki</a>
                   </Link>{" "}
                   - Tüm Hakları Saklıdır.
                 </Typography>
