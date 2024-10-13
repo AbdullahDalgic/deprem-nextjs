@@ -77,7 +77,7 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
                     depremler hakkında en güncel ve doğru bilgileri sağlamayı
                     hedeflemektedir. Ayrıca, bu platforma entegre ettiğimiz{" "}
                     <Link href="/apps" legacyBehavior target="_blank">
-                      <a>tarayıcı uzantısı</a>
+                      <a style={{ color: "#777777" }}>tarayıcı uzantısı</a>
                     </Link>{" "}
                     sayesinde kullanıcılarımız, deprem haberlerine anlık erişim
                     sağlayabilir.

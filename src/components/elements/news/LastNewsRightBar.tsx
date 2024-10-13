@@ -9,11 +9,11 @@ import { Box, Grid2, Typography, useMediaQuery } from "@mui/material";
 import { INews } from "@/utils/interfaces/news";
 
 const LastNewsRightBar = () => {
-  const matches = useMediaQuery("(min-width:600px)");
-  const [loading, setLoading] = React.useState(false);
+  const isNotMobile = useMediaQuery("(min-width:600px)");
+  const [loading, setLoading] = React.useState(true);
   const [news, setNews] = React.useState<INews[]>();
+
   React.useEffect(() => {
-    setLoading(true);
     if (loading) {
       API.get(`/news?limit=10`).then(({ data }) => {
         setNews(data?.data);
@@ -21,7 +21,13 @@ const LastNewsRightBar = () => {
     }
   }, [loading]);
 
-  if (!matches && !loading) return null;
+  React.useEffect(() => {
+    const removeLoader = () => setLoading(false);
+    window.addEventListener("load", removeLoader);
+    return window.removeEventListener("load", removeLoader);
+  }, []);
+
+  if (!isNotMobile && loading) return null;
 
   return (
     <div className="widget sidebar-widget widget_categories">

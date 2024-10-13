@@ -3,15 +3,15 @@ import React from "react";
 import Script from "next/script";
 
 const Scripts = () => {
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    setTimeout(() => {
-      setLoading(true);
-    }, 100);
+    const removeLoader = () => setLoading(false);
+    window.addEventListener("load", removeLoader);
+    return window.removeEventListener("load", removeLoader);
   }, []);
 
-  if (!loading) return null;
+  if (loading) return null;
 
   return (
     <>
