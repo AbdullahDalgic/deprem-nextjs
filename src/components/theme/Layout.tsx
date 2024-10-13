@@ -8,9 +8,9 @@ import React from "react";
 import Header3 from "./Header/Header3";
 import Footer3 from "./Footer/Footer3";
 import BackToTop from "@/components/elements/BackToTop";
-import Script from "next/script";
 import NEXT_API from "@/utils/api/apiConfigNextjs";
 import "dayjs/locale/tr";
+import Scripts from "./Scripts";
 
 interface ILayout {
   children: React.ReactNode;
@@ -107,37 +107,7 @@ export default function Layout({
       <Footer3 footerClass={footerClass} logoWhite={!!logoWhite} />
       <BackToTop />
 
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-NX6P3CKR55"
-        strategy="lazyOnload"
-        id="google-analytics-script"
-      />
-      <Script strategy="lazyOnload" id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-NX6P3CKR55');
-        `}
-      </Script>
-
-      <Script
-        strategy="lazyOnload"
-        id="google-news"
-        src="https://news.google.com/swg/js/v1/swg-basic.js"
-      />
-      <Script strategy="lazyOnload" id="google-news-script">
-        {`
-          (self.SWG_BASIC = self.SWG_BASIC || []).push( basicSubscriptions => {
-            basicSubscriptions.init({
-              type: "NewsArticle",
-              isPartOfType: ["Product"],
-              isPartOfProductId: "CAowkNq1DA:openaccess",
-              clientOptions: { theme: "light", lang: "tr" },
-            });
-          });
-        `}
-      </Script>
+      <Scripts />
     </ThemeProvider>
   );
 }
