@@ -71,12 +71,12 @@
     01. Theme Default CSS
 ===============================*/
 body {
-  font-family: var(--tg-body-font-family)!important;
-  font-size: var(--tg-body-font-size)!important;
-  font-weight: var(--tg-fw-regular)!important;
-  color: var(--tg-body-color)!important;
-  line-height: var(--tg-body-line-height)!important;
-  background-color: var(--tg-common-color-gray)!important;
+  font-family: var(--tg-body-font-family) !important;
+  font-size: var(--tg-body-font-size) !important;
+  font-weight: var(--tg-fw-regular) !important;
+  color: var(--tg-body-color) !important;
+  line-height: var(--tg-body-line-height) !important;
+  background-color: var(--tg-common-color-gray) !important;
 }
 
 img,
@@ -879,12 +879,17 @@ input[type=color] {
   margin: 0 0;
 }
 
+.breadcrumb-area p {
+  color: var(--tg-common-color-black) !important;
+}
+
 .breadcrumb-area {
   margin: -1px 0 0;
 }
 
 .breadcrumb-content {
   background: var(--tg-common-color-white);
+  color: var(--tg-dark-color-1) !important;
   padding: 24px 30px;
 }
 
@@ -7255,6 +7260,10 @@ blockquote .blockquote-cite .info span {
   background: var(--tg-dark-color-1) !important;
 }
 
+.dark-theme .breadcrumb-area p {
+  color: var(--tg-common-color-white) !important;
+}
+
 .dark-theme .blog-details-tags ul li a,
 .dark-theme .footer-style-three.footer-bg .copyright__text p {
   color: var(--tg-common-color-white);
@@ -7502,6 +7511,38 @@ blockquote .blockquote-cite .info span {
   background: #fff;
   border-radius: 5px;
   margin-top: -6px;
+}
+
+article p {
+  color: var(--tg-heading-color);
+}
+
+article a {
+  color: var(--tg-theme-primary);
+}
+
+article a:hover {
+  color: var(--tg-theme-secondary);
+}
+
+article strong {
+  color: var(--tg-heading-color);
+}
+
+.dark-theme article p {
+  color: var(--tg-common-color-white);
+}
+
+.dark-theme article a {
+  color: var(--tg-theme-primary);
+}
+
+.dark-theme article a:hover {
+  color: var(--tg-theme-secondary);
+}
+
+.dark-theme article strong {
+  color: var(--tg-common-color-white);
 }
 
 /*# sourceMappingURL=main.css.map */

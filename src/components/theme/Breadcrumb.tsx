@@ -61,11 +61,7 @@ export default function Breadcrumb({
           className="breadcrumb-content"
           separator={<MdNavigateNext fontSize="small" />}
         >
-          <Link
-            style={{ display: "flex", alignItems: "center" }}
-            color="inherit"
-            href="/"
-          >
+          <Link style={{ display: "flex", alignItems: "center" }} href="/">
             <Typography variant="body1" sx={{ fontWeight: "bold" }}>
               Deprem Wiki
             </Typography>
@@ -74,7 +70,6 @@ export default function Breadcrumb({
           {breadcrumbCategory && (
             <Link
               style={{ display: "flex", alignItems: "center" }}
-              color="inherit"
               href={breadcrumbCategoryLink || "#"}
             >
               <Typography variant="body1" sx={{ fontWeight: "bold" }}>
