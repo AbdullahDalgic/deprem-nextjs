@@ -25,60 +25,49 @@ const SearchPage = (props: ISearchPage) => {
   const url = generateSearchLink(terms);
 
   return (
-    <>
-      <Breadcrumb
-        breadcrumbCategory="Arama Sonuçları"
-        breadcrumbCategoryLink="/ara"
-        breadcrumbPostTitle={terms}
-        breadcrumbPostUrl={url}
-      />
-
-      <section>
-        <Container maxWidth="lg" sx={{ mt: 2 }}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              gap: 2,
-              alignItems: "center",
-              backgroundColor: "#ebebeb",
-              borderRadius: 2,
-              padding: 2,
-              marginBottom: 2,
-            }}
-          >
-            <Typography
-              component="p"
-              sx={{ color: "#000", width: "200px", fontWeight: 600 }}
-            >
-              Deprem Wiki'de Ara :
-            </Typography>
-            <Box sx={{ width: "100%" }}>
-              <TextField
-                hiddenLabel
-                variant="filled"
-                placeholder="Deprem Wiki'de Ara"
-                fullWidth
-                size="small"
-                value={terms}
-              />
-            </Box>
-          </Box>
-
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            {data.map((item, index) => (
-              <SearchItem key={index} item={item} />
-            ))}
-          </Box>
-
-          <PaginationComponent
-            current_page={current_page}
-            last_page={last_page}
-            url={url}
+    <Container maxWidth="lg" sx={{ mt: 2 }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 2,
+          alignItems: "center",
+          backgroundColor: "#ebebeb",
+          borderRadius: 2,
+          padding: 2,
+          marginBottom: 2,
+        }}
+      >
+        <Typography
+          component="p"
+          sx={{ color: "#000", width: "200px", fontWeight: 600 }}
+        >
+          Deprem Wiki'de Ara :
+        </Typography>
+        <Box sx={{ width: "100%" }}>
+          <TextField
+            hiddenLabel
+            variant="filled"
+            placeholder="Deprem Wiki'de Ara"
+            fullWidth
+            size="small"
+            value={terms}
           />
-        </Container>
-      </section>
-    </>
+        </Box>
+      </Box>
+
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+        {data.map((item, index) => (
+          <SearchItem key={index} item={item} />
+        ))}
+      </Box>
+
+      <PaginationComponent
+        current_page={current_page}
+        last_page={last_page}
+        url={url}
+      />
+    </Container>
   );
 };
 

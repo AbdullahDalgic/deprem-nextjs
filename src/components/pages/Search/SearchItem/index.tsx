@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { IEarthquake } from "@/utils/interfaces/earthquakes";
 import NewsItem from "./NewsItem";

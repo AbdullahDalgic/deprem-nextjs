@@ -32,6 +32,13 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body className={roboto.className}>
+        <link
+          rel="search"
+          type="application/opensearchdescription+xml"
+          title="Deprem Wiki Arama"
+          href="/opensearch.xml"
+        />
+
         <Layout footerClass="black-bg" logoWhite={true}>
           {children}
         </Layout>

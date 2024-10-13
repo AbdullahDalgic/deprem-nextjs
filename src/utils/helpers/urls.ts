@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { IEarthquake } from "../interfaces/earthquakes";
 import { INews } from "../interfaces/news";
 
-export const generateSearchLink = (term: string) => {
+export const generateSearchLink = (term: string = "") => {
   term = term.toLocaleLowerCase("tr");
   term = term.replace(/ /g, "+");
   term = term.replace(/ç/g, "c");
