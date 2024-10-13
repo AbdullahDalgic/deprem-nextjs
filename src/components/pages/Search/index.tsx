@@ -1,3 +1,4 @@
+"use server";
 import React from "react";
 import { Box, Container, TextField, Typography } from "@mui/material";
 import Breadcrumb from "@/components/theme/Breadcrumb";
@@ -6,26 +7,29 @@ import { IEarthquake } from "@/utils/interfaces/earthquakes";
 import { IPagination } from "@/utils/interfaces/pagination";
 import SearchItem from "./SearchItem";
 import PaginationComponent from "./Pagination";
+import { headers } from "next/headers";
 
 interface ISearchPage {
   data: IPagination<IEarthquake>;
-  terms: string;
 }
 
 const SearchPage = (props: ISearchPage) => {
-  const { terms = "" } = props;
   const { data, current_page, last_page }: IPagination<IEarthquake> =
     props.data || {};
 
-  const _terms = terms.replace(/%2B/g, " ");
-  const url = generateSearchLink(_terms);
+  const headersList = headers();
+  const referer = headersList.get("referer") || "";
+  const q = new URL(referer).searchParams.get("q") || "";
+
+  const terms = q.replace(/%2B/g, " ");
+  const url = generateSearchLink(terms);
 
   return (
     <>
       <Breadcrumb
         breadcrumbCategory="Arama Sonuçları"
         breadcrumbCategoryLink="/ara"
-        breadcrumbPostTitle={_terms}
+        breadcrumbPostTitle={terms}
         breadcrumbPostUrl={url}
       />
 
@@ -56,7 +60,7 @@ const SearchPage = (props: ISearchPage) => {
                 placeholder="Deprem Wiki'de Ara"
                 fullWidth
                 size="small"
-                value={_terms}
+                value={terms}
               />
             </Box>
           </Box>

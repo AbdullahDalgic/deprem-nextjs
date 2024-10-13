@@ -40,5 +40,5 @@ export default async function Search() {
 
   if (!data) return null;
 
-  return <SearchPage data={data} terms={terms} />;
+  return <SearchPage data={data} />;
 }
