@@ -10,7 +10,15 @@ import ShareLeftSide from "@/components/elements/share/ShareLeftSide";
 import ShareBottomSide from "@/components/elements/share/ShareBottomSide";
 import Breadcrumb from "@/components/theme/Breadcrumb";
 import { notFound } from "next/navigation";
-import { generateSearchLink } from "@/utils/helpers/urls";
+import {
+  generateEarthquakeLink,
+  generateSearchLink,
+} from "@/utils/helpers/urls";
+import {
+  earthquakeDescription,
+  earthquakeMetaImage,
+  earthquakeTitle,
+} from "@/utils/helpers/earthquakeHelper";
 
 interface IEarthquakePage {
   params: {
@@ -24,9 +32,9 @@ export async function generateMetadata({ params }: IEarthquakePage) {
   const { data } = await API.get(`/earthquakes/${folder}/${id}`);
 
   return SeoData({
-    title: `${data?.location} ${data?.magnitude} Büyüklüğünde Deprem`,
-    description: `${data?.location} bölgesinde ${data?.magnitude} büyüklüğünde deprem meydana geldi. Deprem hakkında detaylı bilgiyi buradan öğrenebilirsiniz.`,
-    url: `${SITE_URL}/depremler/${folder}/${data?.eventId}`,
+    title: earthquakeTitle(data),
+    description: earthquakeDescription(data),
+    url: generateEarthquakeLink(data),
   });
 }
 
@@ -35,10 +43,10 @@ export default async function EarthquakeData({ params }: IEarthquakePage) {
   const { data } = await API.get(`/earthquakes/${folder}/${id}`);
   dayjs.locale("tr");
 
-  const canonical = `${SITE_URL}/depremler/${folder}/${data?.eventId}`;
-  const metaImage = `${SITE_URL}/assets/img/logo/logo.png`;
-  const title = `${data?.location} ${data?.magnitude} Büyüklüğünde Deprem`;
-  const description = `${data?.location} bölgesinde ${data?.magnitude} büyüklüğünde deprem meydana geldi. Deprem hakkında detaylı bilgiyi buradan öğrenebilirsiniz.`;
+  const canonical = generateEarthquakeLink(data);
+  const metaImage = earthquakeMetaImage();
+  const title = earthquakeTitle(data);
+  const description = earthquakeDescription(data);
 
   const jsonLd = {
     "@context": "https://schema.org",

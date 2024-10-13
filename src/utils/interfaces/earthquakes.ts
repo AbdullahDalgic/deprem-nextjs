@@ -1,3 +1,5 @@
+import { INews } from "./news";
+
 export interface IEarthquake {
   eventId: number;
   location: string;
@@ -9,4 +11,5 @@ export interface IEarthquake {
   eventDate: string;
   created_at: string;
   updated_at: string;
+  news?: INews;
 }

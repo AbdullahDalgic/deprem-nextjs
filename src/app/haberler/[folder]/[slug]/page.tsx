@@ -13,7 +13,7 @@ import EarthquakeDataTableMini from "@/components/elements/earthquake/Earthquake
 import Breadcrumb from "@/components/theme/Breadcrumb";
 import { INews } from "@/utils/interfaces/news";
 import { notFound } from "next/navigation";
-import { generateSearchLink } from "@/utils/helpers/urls";
+import { generateNewsLink, generateSearchLink } from "@/utils/helpers/urls";
 
 interface INewsPage {
   params: {
@@ -31,7 +31,7 @@ export const generateMetadata = async (props: INewsPage) => {
     title: data?.title,
     description: data?.meta_description,
     image: `${API_URL}${data?.image}`,
-    url: `${SITE_URL}/haberler/${date}/${slug}`,
+    url: generateNewsLink(data),
     preload: [`${API_URL}${data?.image}`],
   });
 };
@@ -42,7 +42,7 @@ export default async function NewsDetail(props: INewsPage) {
   const { data }: { data: INews } = await API.get(`/news/${date}/${slug}`);
   dayjs.locale("tr");
 
-  const canonical = `${SITE_URL}/haberler/${date}/${slug}`;
+  const canonical = generateNewsLink(data);
   const metaImage = `${API_URL}${data?.image}`;
 
   const jsonLd = {

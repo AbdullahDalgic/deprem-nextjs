@@ -7,6 +7,7 @@ import Image from "next/image";
 import { API_URL } from "@/utils/constants";
 import { Box, Grid2, Typography, useMediaQuery } from "@mui/material";
 import { INews } from "@/utils/interfaces/news";
+import { generateNewsLink } from "@/utils/helpers/urls";
 
 const LastNewsRightBar = () => {
   const isNotMobile = useMediaQuery("(min-width:600px)");
@@ -36,8 +37,7 @@ const LastNewsRightBar = () => {
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
         {news &&
           news?.map((item, index) => {
-            const date = dayjs(item?.created_at).format("YYYY-MM-DD");
-            const url = `/haberler/${date}/${item?.slug}`;
+            const url = generateNewsLink(item);
             return (
               <Grid2 key={index} container spacing={2} alignItems="center">
                 {/* <Col span={6}> */}

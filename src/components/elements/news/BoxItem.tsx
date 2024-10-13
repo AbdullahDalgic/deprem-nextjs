@@ -7,6 +7,7 @@ import { INews } from "@/utils/interfaces/news";
 import { PiEyesFill } from "react-icons/pi";
 import { FaRegCommentDots } from "react-icons/fa";
 import { IoShareSocialSharp } from "react-icons/io5";
+import { generateNewsLink } from "@/utils/helpers/urls";
 
 interface IBoxItem {
   news: INews;
@@ -14,8 +15,7 @@ interface IBoxItem {
 }
 
 const BoxItem = ({ news }: IBoxItem) => {
-  const date = dayjs(news?.created_at).format("YYYY-MM-DD");
-  const url = `/haberler/${date}/${news?.slug}`;
+  const url = generateNewsLink(news);
 
   return (
     <div className="trending__post">

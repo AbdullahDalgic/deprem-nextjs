@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "www.deprem.wiki",
+        hostname: "deprem.wiki",
         port: "",
         pathname: "/assets/img/**",
       },

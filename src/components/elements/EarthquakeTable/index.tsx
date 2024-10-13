@@ -14,6 +14,7 @@ import Link from "next/link";
 import { FaLink } from "react-icons/fa";
 import dayjs from "dayjs";
 import { IEarthquake } from "@/utils/interfaces/earthquakes";
+import { generateEarthquakeLink } from "@/utils/helpers/urls";
 
 function descendingComparator(a: any, b: any, orderBy: any) {
   if (b[orderBy] < a[orderBy]) {
@@ -158,9 +159,7 @@ export default function EarthquakeTable({
                 <TableRow hover tabIndex={-1} key={index}>
                   <TableCell>
                     <Link
-                      href={`/depremler/${dayjs(row.eventDate).format(
-                        "YYYY-MM-DD"
-                      )}/${row.eventId}`}
+                      href={generateEarthquakeLink(row)}
                       style={{
                         display: "flex",
                         width: "100%",

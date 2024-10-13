@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import API from "./utils/api/apiConfig";
 import dayjs from "dayjs";
+import { generateEarthquakeLink } from "./utils/helpers/urls";
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl || {};
@@ -10,8 +11,7 @@ export async function middleware(request: NextRequest) {
     if (id == Number(id).toString()) {
       const { data } = await API.get(`/earthquakes/${id}`);
       if (data) {
-        const folder = dayjs(data.eventDate).format("YYYY-MM-DD");
-        const url = `/depremler/${folder}/${data.eventId}`;
+        const url = generateEarthquakeLink(data);
         return NextResponse.redirect(new URL(url, request.url), 302);
       }
     }
