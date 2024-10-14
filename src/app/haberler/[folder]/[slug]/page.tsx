@@ -14,6 +14,7 @@ import Breadcrumb from "@/components/theme/Breadcrumb";
 import { INews } from "@/utils/interfaces/news";
 import { notFound } from "next/navigation";
 import { generateNewsLink, generateSearchLink } from "@/utils/helpers/urls";
+import { headers } from "next/headers";
 
 interface INewsPage {
   params: {
@@ -37,6 +38,11 @@ export const generateMetadata = async (props: INewsPage) => {
 };
 
 export default async function NewsDetail(props: INewsPage) {
+  const headersList = headers();
+  const isMobile = headersList.get("x-device_type")
+    ? headersList.get("x-device_type") === "mobile"
+    : false;
+
   const { folder, slug } = props.params;
   const date = dayjs(folder).format("YYYY-MM-DD");
   const { data }: { data: INews } = await API.get(`/news/${date}/${slug}`);
@@ -125,10 +131,14 @@ export default async function NewsDetail(props: INewsPage) {
                         src={`${API_URL}${data.image_map}`}
                         alt={data.title}
                         style={{ width: "100%", objectFit: "cover" }}
-                        width={700}
-                        height={700}
+                        width={isMobile ? 300 : 700}
+                        height={isMobile ? 300 : 700}
                         loading="eager"
-                        sizes="(max-width: 700px) 100vw, 700px"
+                        sizes={
+                          isMobile
+                            ? "(max-width: 300px) 100vw, 300px"
+                            : "(max-width: 700px) 100vw, 700px"
+                        }
                       />
                       <figcaption>{data.title}</figcaption>
                     </Zoom>
