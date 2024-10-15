@@ -11,6 +11,7 @@ import BackToTop from "@/components/elements/BackToTop";
 import NEXT_API from "@/utils/api/apiConfigNextjs";
 import "dayjs/locale/tr";
 import Scripts from "./Scripts";
+import Script from "next/script";
 
 interface ILayout {
   children: React.ReactNode;
@@ -108,6 +109,21 @@ export default function Layout({
       <BackToTop />
 
       <Scripts />
+
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-NX6P3CKR55"
+        strategy="lazyOnload"
+        id="google-analytics-script"
+      />
+      <Script strategy="lazyOnload" id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-NX6P3CKR55');
+          console.log('loaded google analytics');
+        `}
+      </Script>
     </ThemeProvider>
   );
 }
