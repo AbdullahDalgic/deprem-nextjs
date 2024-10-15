@@ -6,12 +6,8 @@ const Scripts = () => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const removeLoader = () => setLoading(false);
-    window.addEventListener("load", removeLoader);
-    return window.removeEventListener("load", removeLoader);
+    setLoading(false);
   }, []);
-
-  if (loading) return null;
 
   return (
     <>
@@ -29,13 +25,15 @@ const Scripts = () => {
         `}
       </Script>
 
-      <Script
-        strategy="lazyOnload"
-        id="google-news"
-        src="https://news.google.com/swg/js/v1/swg-basic.js"
-      />
-      <Script strategy="lazyOnload" id="google-news-script">
-        {`
+      {!loading && (
+        <>
+          <Script
+            strategy="lazyOnload"
+            id="google-news"
+            src="https://news.google.com/swg/js/v1/swg-basic.js"
+          />
+          <Script strategy="lazyOnload" id="google-news-script">
+            {`
           (self.SWG_BASIC = self.SWG_BASIC || []).push( basicSubscriptions => {
             basicSubscriptions.init({
               type: "NewsArticle",
@@ -45,7 +43,9 @@ const Scripts = () => {
             });
           });
         `}
-      </Script>
+          </Script>
+        </>
+      )}
     </>
   );
 };
