@@ -6,20 +6,22 @@ const Scripts = () => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, []);
+
+  if (loading) return null;
 
   return (
     <>
-      {!loading && (
-        <>
-          <Script
-            strategy="lazyOnload"
-            id="google-news"
-            src="https://news.google.com/swg/js/v1/swg-basic.js"
-          />
-          <Script strategy="lazyOnload" id="google-news-script">
-            {`
+      <Script
+        strategy="lazyOnload"
+        id="google-news"
+        src="https://news.google.com/swg/js/v1/swg-basic.js"
+      />
+      <Script strategy="lazyOnload" id="google-news-script">
+        {`
           (self.SWG_BASIC = self.SWG_BASIC || []).push( basicSubscriptions => {
             basicSubscriptions.init({
               type: "NewsArticle",
@@ -29,9 +31,7 @@ const Scripts = () => {
             });
           });
         `}
-          </Script>
-        </>
-      )}
+      </Script>
     </>
   );
 };
