@@ -109,7 +109,7 @@ export default function Menu({
         <div
           className="mobile-nav-toggler"
           onClick={handleMobileMenuOpen}
-          aria-label="Open main navigation"
+          title="Open main navigation"
         >
           <i className="fas fa-bars" />
         </div>
