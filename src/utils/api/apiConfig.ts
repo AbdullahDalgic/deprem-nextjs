@@ -1,15 +1,17 @@
 import xior from "xior";
 import { API_URL } from "../constants";
 
+const cacheSeconds = 10;
+
 const API = xior.create({
   baseURL: API_URL + "/api",
   timeout: 60000,
   headers: {
-    // no cache
-    "Cache-Control": "no-cache",
-    Pragma: "no-cache",
-    Expires: "0",
+    "Cache-Control": `${cacheSeconds}`,
+    Pragma: `${cacheSeconds}`,
+    Expires: `${cacheSeconds}`,
   },
+  next: { revalidate: cacheSeconds },
 });
 
 // API Request interceptor
