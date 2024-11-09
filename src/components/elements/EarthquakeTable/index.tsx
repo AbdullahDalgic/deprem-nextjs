@@ -146,7 +146,7 @@ export default function EarthquakeTable({
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
-            size={"small"}
+            size={"medium"}
           >
             <EnhancedTableHead
               order={order}
@@ -167,7 +167,7 @@ export default function EarthquakeTable({
                       }}
                       title="Detaylar"
                     >
-                      {row.location} <FaLink />
+                      <FaLink /> {row.location} 
                     </Link>
                   </TableCell>
                   <TableCell align="right">{row.magnitude}</TableCell>
@@ -191,6 +191,10 @@ export default function EarthquakeTable({
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
+            labelRowsPerPage="Sayfa başına satır"
+            labelDisplayedRows={({ from, to, count }) =>
+              `${from}-${to} / Toplam ${count}`
+            }
           />
         )}
       </Paper>
