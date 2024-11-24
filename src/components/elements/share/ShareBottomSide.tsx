@@ -19,7 +19,7 @@ const ShareBottomSide = (props: IShareLeftSide) => {
 
   return (
     <div className="blog-details-share">
-      <Typography variant="h6" component="p">
+      <Typography variant="h6" component="p" fontSize={14} color="#575757">
         Paylaş :
       </Typography>
       <ul className="list-wrap mb-0">
