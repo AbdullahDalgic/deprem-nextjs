@@ -65,7 +65,7 @@ const LastNewsRightBar = () => {
                   {/* <Text>{dayjs(item?.created_at).format("DD MMMM YYYY")}</Text> */}
                   <Typography
                     variant="body1"
-                    sx={{ fontSize: 10, color: "#888888" }}
+                    sx={{ fontSize: 10, color: "#575757" }}
                   >
                     {dayjs(item?.created_at).format("DD MMMM YYYY")}
                   </Typography>
