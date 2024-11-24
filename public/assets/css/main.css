@@ -70,6 +70,10 @@
 /*=============================
     01. Theme Default CSS
 ===============================*/
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--tg-body-font-family) !important;
   font-size: var(--tg-body-font-size) !important;
