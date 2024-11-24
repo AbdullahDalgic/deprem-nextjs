@@ -80,8 +80,8 @@ export default async function NewsDetail(props: INewsPage) {
       />
 
       <Breadcrumb
-        breadcrumbCategory={"Depremler"}
-        breadcrumbCategoryLink={`${SITE_URL}/depremler`}
+        breadcrumbCategory={"Haberler"}
+        breadcrumbCategoryLink={`${SITE_URL}/haberler`}
         breadcrumbPostUrl={canonical}
         breadcrumbPostTitle={data.title}
       />
