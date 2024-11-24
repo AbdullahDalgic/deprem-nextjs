@@ -75,8 +75,8 @@ export default function EarthquakeTable({
 
   const headCells = [
     { id: "location", label: "Konum" },
-    { id: "magnitude", label: <TbWaveSawTool size={30} title="Büyüklük" /> },
-    { id: "depth", label: <RiEarthquakeLine size={30} title="Derinlik" /> },
+    { id: "magnitude", label: "Büyüklük" },
+    { id: "depth", label: "Derinlik" },
     { id: "eventDate", label: "Tarih" },
   ];
 
@@ -132,7 +132,7 @@ export default function EarthquakeTable({
               borderColor="grey.300"
               borderRadius={2}
             >
-              <Typography variant="h6">
+              <Typography variant="h6" fontSize={15}>
                 <Link
                   href={generateEarthquakeLink(row as IEarthquake)}
                   style={{ display: "flex", alignItems: "center", gap: "8px" }}
@@ -167,7 +167,7 @@ export default function EarthquakeTable({
       ) : (
         // Masaüstü tasarım: standart tablo görünümü
         <TableContainer>
-          <Table sx={{ minWidth: 750 }} size="medium">
+          <Table sx={{ minWidth: 750 }} size="small">
             <EnhancedTableHead order={order} orderBy={orderBy} />
             <TableBody>
               {rows.map((row, index) => (
@@ -202,7 +202,8 @@ export default function EarthquakeTable({
               labelRowsPerPage="Gösterilen"
               labelDisplayedRows={({ from, to, count }) =>
                 `${from}-${to} / Toplam ${count}`
-              }  sx={{
+              }
+              sx={{
                 marginTop: "10px",
               }}
             />
