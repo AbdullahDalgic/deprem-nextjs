@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { API_URL } from "@/utils/constants";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import dayjs from "dayjs";
@@ -19,7 +18,7 @@ const NewsItem = ({ news }: ISearchItem) => {
       <Box width={50} height={50}>
         <Link href={url}>
           <Image
-            src={`${API_URL}${news?.image_map}`}
+            src={`${news?.image_map}`}
             alt={news?.title}
             style={{ width: "auto", height: "auto" }}
             width={50}

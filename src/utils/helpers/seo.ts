@@ -26,7 +26,7 @@ export default async function SeoData(data: ISeo) {
   const {
     title,
     description = "Türkiye'deki son depremler ve deprem haberleri",
-    image = `${SITE_URL}/assets/img/logo/logo.png`,
+    image = `/assets/img/logo/logo.png`,
     author = "Deprem Wiki",
     url = SITE_URL,
     robots = true,
@@ -84,8 +84,8 @@ export default async function SeoData(data: ISeo) {
       images: image,
     },
     icons: {
-      icon: `${SITE_URL}/assets/img/logo/logo.png`,
-      apple: `${SITE_URL}/assets/img/logo/logo.png`,
+      icon: `/assets/img/logo/logo.png`,
+      apple: `/assets/img/logo/logo.png`,
     },
     verification: {},
   };

@@ -4,7 +4,6 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import API from "@/utils/api/apiConfig";
 import Image from "next/image";
-import { API_URL } from "@/utils/constants";
 import { Box, Grid2, Typography, useMediaQuery } from "@mui/material";
 import { INews } from "@/utils/interfaces/news";
 import { generateNewsLink } from "@/utils/helpers/urls";
@@ -44,7 +43,7 @@ const LastNewsRightBar = () => {
                 <Grid2 size={3}>
                   <Link href={url}>
                     <Image
-                      src={`${API_URL}${item?.image_map}`}
+                      src={`${item?.image_map}`}
                       alt={item?.title}
                       style={{ width: "auto", height: "auto" }}
                       width={100}

@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { API_URL } from "@/utils/constants";
 import dayjs from "dayjs";
 import Image from "next/image";
 import { INews } from "@/utils/interfaces/news";
@@ -25,7 +24,7 @@ const BoxItem = ({ news }: IBoxItem) => {
         </Link> */}
         <Link href={url}>
           <Image
-            src={`${API_URL}${news?.image_map}`}
+            src={`${news?.image_map}`}
             alt={news?.title}
             style={{ width: "100%" }}
             width={700}
