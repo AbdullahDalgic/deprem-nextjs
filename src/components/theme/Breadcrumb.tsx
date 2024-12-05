@@ -91,10 +91,8 @@ export default function Breadcrumb({
         </Breadcrumbs>
       </Container>
 
-      <Script
-        id="json-ld-breadcrumb"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
       />
     </div>

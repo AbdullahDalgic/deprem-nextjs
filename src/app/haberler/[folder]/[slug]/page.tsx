@@ -56,11 +56,17 @@ export default async function NewsDetail(props: INewsPage) {
     "@type": "NewsArticle",
     headline: data?.title || "",
     datePublished: data?.created_at || "",
-    image: metaImage,
+    image: {
+      "@type": "ImageObject",
+      url: metaImage,
+      width: "600",
+      height: "600",
+    },
+    thumbnail: {},
     articleBody: data?.content || "",
     author: {
-      "@type": "Person",
-      name: "Admin",
+      "@type": "Organization",
+      name: "Deprem Wiki",
     },
     publisher: {
       "@type": "Organization",
