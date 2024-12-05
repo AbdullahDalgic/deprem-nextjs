@@ -1,4 +1,4 @@
-import { API_URL, SITE_URL } from "@/utils/constants";
+import { SITE_URL } from "@/utils/constants";
 import Link from "next/link";
 import API from "@/utils/api/apiConfig";
 import dayjs from "dayjs";
@@ -31,9 +31,9 @@ export const generateMetadata = async (props: INewsPage) => {
   return SeoData({
     title: data?.title,
     description: data?.meta_description,
-    image: `${API_URL}${data?.image}`,
+    image: data?.image,
     url: generateNewsLink(data),
-    preload: [`${API_URL}${data?.image}`],
+    preload: [data?.image],
   });
 };
 
@@ -49,7 +49,7 @@ export default async function NewsDetail(props: INewsPage) {
   dayjs.locale("tr");
 
   const canonical = generateNewsLink(data);
-  const metaImage = `${API_URL}${data?.image}`;
+  const metaImage = data?.image;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -134,7 +134,7 @@ export default async function NewsDetail(props: INewsPage) {
                   >
                     <Zoom>
                       <Image
-                        src={`${API_URL}${data.image_map}`}
+                        src={`${data.image_map}`}
                         alt={data.title}
                         style={{ width: "100%", objectFit: "cover" }}
                         width={isMobile ? 300 : 700}

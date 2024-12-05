@@ -1,4 +1,4 @@
-import { API_URL, SITE_URL } from "@/utils/constants";
+import { SITE_URL } from "@/utils/constants";
 import Link from "next/link";
 import API from "@/utils/api/apiConfig";
 import dayjs from "dayjs";
