@@ -23,6 +23,17 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(url, request.url), 302);
   }
 
+  if (pathname.startsWith("/eklenti-sil/")) {
+    const token = pathname.split("/")[2];
+    if (token) {
+      try {
+        const { data } = await API.get(`/unregister-token/${token}`);
+      } catch (error) {}
+    }
+
+    return NextResponse.redirect(new URL("/apps", request.url), 302);
+  }
+
   if (pathname === "/eklenti") {
     return NextResponse.redirect(new URL("/apps", request.url), 302);
   }
