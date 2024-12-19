@@ -19,14 +19,18 @@ export async function middleware(request: NextRequest) {
   }
 
   if (
-    pathname.includes("/gizlilik-sozlesmesi") ||
-    pathname.includes("/gizlilik-politikasi")
+    !pathname.startsWith("/sayfalar/") &&
+    (pathname.includes("/gizlilik-sozlesmesi") ||
+      pathname.includes("/gizlilik-politikasi"))
   ) {
     const url = "/sayfalar/gizlilik-politikasi";
     return NextResponse.redirect(new URL(url, request.url), 302);
   }
 
-  if (pathname.includes("/kullanim-kosullari")) {
+  if (
+    !pathname.startsWith("/sayfalar/") &&
+    pathname.includes("/kullanim-kosullari")
+  ) {
     const url = "/sayfalar/kullanim-kosullari";
     return NextResponse.redirect(new URL(url, request.url), 302);
   }
