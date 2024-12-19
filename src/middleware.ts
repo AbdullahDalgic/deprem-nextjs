@@ -18,7 +18,10 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  if (pathname.includes("/gizlilik-sozlesmesi")) {
+  if (
+    pathname.includes("/gizlilik-sozlesmesi") ||
+    pathname.includes("/gizlilik-politikasi")
+  ) {
     const url = "/sayfalar/gizlilik-politikasi";
     return NextResponse.redirect(new URL(url, request.url), 302);
   }
