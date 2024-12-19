@@ -31,6 +31,8 @@ export async function generateMetadata({ params }: IEarthquakePage) {
   const { id, folder } = params;
   const { data } = await API.get(`/earthquakes/${folder}/${id}`);
 
+  if (!data) return notFound();
+
   return SeoData({
     title: earthquakeTitle(data),
     description: earthquakeDescription(data),

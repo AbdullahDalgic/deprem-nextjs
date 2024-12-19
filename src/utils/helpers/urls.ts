@@ -16,7 +16,8 @@ export const generateSearchLink = (term: string = "") => {
 };
 
 export const generateEarthquakeLink = (earthquake: IEarthquake) => {
-  const { eventId, eventDate } = earthquake;
+  console.log("🚀 ~ generateEarthquakeLink ~ earthquake:", earthquake);
+  const { eventId = "", eventDate = "" } = earthquake;
   const folder = dayjs(eventDate).format("YYYY-MM-DD");
 
   return `/depremler/${folder}/${eventId}`;

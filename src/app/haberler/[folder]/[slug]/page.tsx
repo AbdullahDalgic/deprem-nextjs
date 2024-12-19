@@ -28,6 +28,8 @@ export const generateMetadata = async (props: INewsPage) => {
   const date = dayjs(folder).format("YYYY-MM-DD");
   const { data }: { data: INews } = await API.get(`/news/${date}/${slug}`);
 
+  if (!data) return notFound();
+
   return SeoData({
     title: data?.title,
     description: data?.meta_description,
