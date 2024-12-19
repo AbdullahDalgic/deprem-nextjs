@@ -18,8 +18,13 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  if (pathname.startsWith("/kurumsal/gizlilik-sozlesmesi")) {
+  if (pathname.includes("/gizlilik-sozlesmesi")) {
     const url = "/sayfalar/gizlilik-politikasi";
+    return NextResponse.redirect(new URL(url, request.url), 302);
+  }
+
+  if (pathname.includes("/kullanim-kosullari")) {
+    const url = "/sayfalar/kullanim-kosullari";
     return NextResponse.redirect(new URL(url, request.url), 302);
   }
 
