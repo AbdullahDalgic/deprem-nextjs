@@ -1,4 +1,3 @@
-// import Layout from "@/components/layout/Layout";
 import API from "@/utils/api/apiConfig";
 import EarthquakeTable from "@/components/elements/EarthquakeTable";
 import SectionTitle from "@/components/elements/SectionTitle";

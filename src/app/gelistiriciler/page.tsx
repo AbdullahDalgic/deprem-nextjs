@@ -1,8 +1,7 @@
-import SectionTitle from "@/components/elements/SectionTitle";
 import Breadcrumb from "@/components/theme/Breadcrumb";
-import { EMAIL, SITE_URL } from "@/utils/constants";
+import { SITE_URL } from "@/utils/constants";
 import SeoData from "@/utils/helpers/seo";
-import { Grid2, Container, Typography, Box } from "@mui/material";
+import { Container, Typography, Box } from "@mui/material";
 
 export const generateMetadata = async () => {
   return SeoData({
