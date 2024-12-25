@@ -973,6 +973,11 @@ color-name@~1.1.4:
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
+commander@^12.1.0:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-12.1.0.tgz#01423b36f501259fdaac4d0e4d60c96c991585d3"
+  integrity sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==
+
 commander@^4.0.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
@@ -2374,6 +2379,13 @@ next@14.2.13:
     "@next/swc-win32-arm64-msvc" "14.2.13"
     "@next/swc-win32-ia32-msvc" "14.2.13"
     "@next/swc-win32-x64-msvc" "14.2.13"
+
+nextjs-plesk-fix@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/nextjs-plesk-fix/-/nextjs-plesk-fix-1.0.0.tgz#eb0debd53cffc85a64cdf46b791d1a2a6b8e2d1c"
+  integrity sha512-LiOMMuVQJ1E3y1gyel1eouKzRj+YCD2u7F2Ltjg1b24ZDI+Md2GOTFK43Vhny2claKbTPVF/uIEeSA65K4655g==
+  dependencies:
+    commander "^12.1.0"
 
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
