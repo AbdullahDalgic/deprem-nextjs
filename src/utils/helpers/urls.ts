@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { IEarthquake } from "../interfaces/earthquakes";
 import { INews } from "../interfaces/news";
+import { SITE_URL } from "../constants";
 
 export const generateSearchLink = (term: string = "") => {
   term = term.toLocaleLowerCase("tr");
@@ -13,6 +14,18 @@ export const generateSearchLink = (term: string = "") => {
   term = term.replace(/ü/g, "u");
 
   return `/ara?q=${term}`;
+};
+
+export const generateImageUrl = (imagePath: string) => {
+  if (imagePath.startsWith(SITE_URL)) {
+    return imagePath;
+  }
+
+  if (!imagePath.startsWith("/")) {
+    imagePath = `/${imagePath}`;
+  }
+
+  return SITE_URL + imagePath;
 };
 
 export const generateEarthquakeLink = (earthquake: IEarthquake) => {

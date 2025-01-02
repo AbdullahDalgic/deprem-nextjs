@@ -13,7 +13,11 @@ import EarthquakeDataTableMini from "@/components/elements/earthquake/Earthquake
 import Breadcrumb from "@/components/theme/Breadcrumb";
 import { INews } from "@/utils/interfaces/news";
 import { notFound } from "next/navigation";
-import { generateNewsLink, generateSearchLink } from "@/utils/helpers/urls";
+import {
+  generateImageUrl,
+  generateNewsLink,
+  generateSearchLink,
+} from "@/utils/helpers/urls";
 import { headers } from "next/headers";
 
 interface INewsPage {
@@ -33,9 +37,9 @@ export const generateMetadata = async (props: INewsPage) => {
   return SeoData({
     title: data?.title,
     description: data?.meta_description,
-    image: data?.image,
+    image: generateImageUrl(data?.image),
     url: generateNewsLink(data),
-    preload: [data?.image],
+    preload: [generateImageUrl(data?.image)],
   });
 };
 
@@ -51,7 +55,7 @@ export default async function NewsDetail(props: INewsPage) {
   dayjs.locale("tr");
 
   const canonical = generateNewsLink(data);
-  const metaImage = data?.image;
+  const metaImage = generateImageUrl(data?.image);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -136,7 +140,7 @@ export default async function NewsDetail(props: INewsPage) {
                   >
                     <Zoom>
                       <Image
-                        src={`${data.image_map}`}
+                        src={generateImageUrl(data?.image_map)}
                         alt={data.title}
                         style={{ width: "100%", objectFit: "cover" }}
                         width={isMobile ? 300 : 700}
