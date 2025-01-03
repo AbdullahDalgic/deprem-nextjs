@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { API_URL, SITE_URL } from "../constants";
+import { generateAssetsUrl } from "./urls";
 
 interface ISeo {
   title?: string;
@@ -26,7 +27,7 @@ export default async function SeoData(data: ISeo) {
   const {
     title,
     description = "Türkiye'deki son depremler ve deprem haberleri",
-    image = `/assets/img/logo/logo.png`,
+    image = generateAssetsUrl(`/assets/img/logo/logo.png`),
     author = "Deprem Wiki",
     url = SITE_URL,
     robots = true,
@@ -84,8 +85,8 @@ export default async function SeoData(data: ISeo) {
       images: image,
     },
     icons: {
-      icon: `/assets/img/logo/logo.png`,
-      apple: `/assets/img/logo/logo.png`,
+      icon: generateAssetsUrl(`/assets/img/logo/logo.png`),
+      apple: generateAssetsUrl(`/assets/img/logo/logo.png`),
     },
     verification: {},
   };

@@ -1,5 +1,5 @@
-import { SITE_URL } from "../constants";
 import { IEarthquake } from "../interfaces/earthquakes";
+import { generateAssetsUrl } from "./urls";
 
 export const earthquakeTitle = (earthquake: IEarthquake) => {
   return `${earthquake?.location} ${earthquake?.magnitude} Büyüklüğünde Deprem`;
@@ -10,5 +10,5 @@ export const earthquakeDescription = (earthquake: IEarthquake) => {
 };
 
 export const earthquakeMetaImage = (earthquake?: IEarthquake) => {
-  return `${SITE_URL}/assets/img/logo/logo.png`;
+  return generateAssetsUrl(`/assets/img/logo/logo.png`);
 };

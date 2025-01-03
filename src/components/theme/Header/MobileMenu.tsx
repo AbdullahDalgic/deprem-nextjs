@@ -1,6 +1,7 @@
 import { SOCIAL } from "@/utils/constants";
 import Link from "next/link";
 import Image from "next/image";
+import { generateAssetsUrl } from "@/utils/helpers/urls";
 
 interface IMobileMenu {
   handleMobileMenuClose: () => void;
@@ -36,7 +37,7 @@ const MobileMenu = ({ handleMobileMenuClose }: IMobileMenu) => {
           <div className="nav-logo">
             <Link href="/" className="logo-dark">
               <Image
-                src={`/assets/img/logo/logo.png`}
+                src={generateAssetsUrl(`/assets/img/logo/logo.png`)}
                 alt="Logo"
                 width={50}
                 height={50}
