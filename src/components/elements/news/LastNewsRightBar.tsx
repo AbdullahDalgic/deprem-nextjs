@@ -6,7 +6,7 @@ import API from "@/utils/api/apiConfig";
 import Image from "next/image";
 import { Box, Grid2, Typography, useMediaQuery } from "@mui/material";
 import { INews } from "@/utils/interfaces/news";
-import { generateNewsLink } from "@/utils/helpers/urls";
+import { generateImageUrl, generateNewsLink } from "@/utils/helpers/urls";
 
 const LastNewsRightBar = () => {
   const isNotMobile = useMediaQuery("(min-width:600px)");
@@ -43,7 +43,7 @@ const LastNewsRightBar = () => {
                 <Grid2 size={3}>
                   <Link href={url}>
                     <Image
-                      src={`${item?.image_map}`}
+                      src={generateImageUrl(`${item?.image_map}`)}
                       alt={item?.title}
                       style={{ width: "auto", height: "auto" }}
                       width={100}

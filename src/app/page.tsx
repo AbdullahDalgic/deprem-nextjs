@@ -10,6 +10,7 @@ import SeoData from "@/utils/helpers/seo";
 import { IEarthquake } from "@/utils/interfaces/earthquakes";
 import { INews } from "@/utils/interfaces/news";
 import { unstable_noStore as noStore } from "next/cache";
+import { generateImageUrl } from "@/utils/helpers/urls";
 
 export async function generateMetadata() {
   noStore();
@@ -17,7 +18,7 @@ export async function generateMetadata() {
   // 3 item
   const preloadImages = data?.news
     ?.slice(0, 3)
-    .map((item: INews) => `${item?.image}`);
+    .map((item: INews) => generateImageUrl(`${item?.image}`));
   return SeoData({
     preload: preloadImages,
   });

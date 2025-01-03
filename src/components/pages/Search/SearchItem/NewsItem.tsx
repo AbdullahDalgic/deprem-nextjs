@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { INews } from "@/utils/interfaces/news";
-import { generateNewsLink } from "@/utils/helpers/urls";
+import { generateImageUrl, generateNewsLink } from "@/utils/helpers/urls";
 
 interface ISearchItem {
   news: INews;
@@ -18,7 +18,7 @@ const NewsItem = ({ news }: ISearchItem) => {
       <Box width={50} height={50}>
         <Link href={url}>
           <Image
-            src={`${news?.image_map}`}
+            src={generateImageUrl(`${news?.image_map}`)}
             alt={news?.title}
             style={{ width: "auto", height: "auto" }}
             width={50}

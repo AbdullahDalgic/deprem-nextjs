@@ -6,7 +6,7 @@ import { INews } from "@/utils/interfaces/news";
 import { PiEyesFill } from "react-icons/pi";
 import { FaRegCommentDots } from "react-icons/fa";
 import { IoShareSocialSharp } from "react-icons/io5";
-import { generateNewsLink } from "@/utils/helpers/urls";
+import { generateImageUrl, generateNewsLink } from "@/utils/helpers/urls";
 
 interface IBoxItem {
   news: INews;
@@ -24,7 +24,7 @@ const BoxItem = ({ news }: IBoxItem) => {
         </Link> */}
         <Link href={url}>
           <Image
-            src={`${news?.image_map}`}
+            src={generateImageUrl(`${news?.image_map}`)}
             alt={news?.title}
             style={{ width: "100%" }}
             width={700}

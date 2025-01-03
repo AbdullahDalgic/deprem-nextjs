@@ -41,7 +41,6 @@ export const generateAssetsUrl = (imagePath: string) => {
 };
 
 export const generateEarthquakeLink = (earthquake: IEarthquake) => {
-  console.log("🚀 ~ generateEarthquakeLink ~ earthquake:", earthquake);
   const { eventId = "", eventDate = "" } = earthquake;
   const folder = dayjs(eventDate).format("YYYY-MM-DD");
 
