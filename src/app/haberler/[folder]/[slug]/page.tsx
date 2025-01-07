@@ -142,7 +142,7 @@ export default async function NewsDetail(props: INewsPage) {
                         src={generateImageUrl(data?.image_map)}
                         alt={data.title}
                         style={{
-                          maxWidth: isMobile ? "300px" : "700px",
+                          maxWidth: isMobile ? window.screen.width : "700px",
                           maxHeight: isMobile ? "300px" : "700px",
                           width: "100%",
                           objectFit: "cover",
