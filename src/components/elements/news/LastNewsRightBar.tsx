@@ -3,7 +3,6 @@ import React from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
 import API from "@/utils/api/apiConfig";
-import Image from "next/image";
 import { Box, Grid2, Typography, useMediaQuery } from "@mui/material";
 import { INews } from "@/utils/interfaces/news";
 import { generateImageUrl, generateNewsLink } from "@/utils/helpers/urls";
@@ -42,12 +41,16 @@ const LastNewsRightBar = () => {
                 {/* <Col span={6}> */}
                 <Grid2 size={3}>
                   <Link href={url}>
-                    <Image
+                    <img
                       src={generateImageUrl(`${item?.image_map}`)}
                       alt={item?.title}
-                      style={{ width: "auto", height: "auto" }}
-                      width={100}
-                      height={100}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        maxWidth: "100px",
+                        maxHeight: "100px",
+                        objectFit: "contain",
+                      }}
                       loading="lazy"
                     />
                   </Link>

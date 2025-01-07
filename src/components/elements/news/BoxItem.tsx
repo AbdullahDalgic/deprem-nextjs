@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
-import Image from "next/image";
 import { INews } from "@/utils/interfaces/news";
 import { PiEyesFill } from "react-icons/pi";
 import { FaRegCommentDots } from "react-icons/fa";
@@ -23,13 +22,10 @@ const BoxItem = ({ news }: IBoxItem) => {
           <i className="fal fa-heart" />
         </Link> */}
         <Link href={url}>
-          <Image
+          <img
             src={generateImageUrl(`${news?.image_map}`)}
             alt={news?.title}
-            style={{ width: "100%" }}
-            width={700}
-            height={700}
-            // priority={index < 3 ? true : false}
+            style={{ width: "100%", maxWidth: "700px" }}
             loading="lazy"
           />
         </Link>

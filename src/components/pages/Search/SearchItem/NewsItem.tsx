@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { Box, Typography } from "@mui/material";
-import Image from "next/image";
 import dayjs from "dayjs";
 import { INews } from "@/utils/interfaces/news";
 import { generateImageUrl, generateNewsLink } from "@/utils/helpers/urls";
@@ -17,12 +16,15 @@ const NewsItem = ({ news }: ISearchItem) => {
     <Box display="flex" alignItems="center" gap={2}>
       <Box width={50} height={50}>
         <Link href={url}>
-          <Image
+          <img
             src={generateImageUrl(`${news?.image_map}`)}
             alt={news?.title}
-            style={{ width: "auto", height: "auto" }}
-            width={50}
-            height={50}
+            style={{
+              width: "100%",
+              height: "100%",
+              maxWidth: "50px",
+              maxHeight: "50px",
+            }}
             loading="lazy"
           />
         </Link>
