@@ -2,7 +2,6 @@ import { SITE_URL } from "@/utils/constants";
 import Link from "next/link";
 import API from "@/utils/api/apiConfig";
 import dayjs from "dayjs";
-import Image from "next/image";
 import { Box, Container, Grid2 } from "@mui/material";
 import Zoom from "react-medium-image-zoom";
 import SeoData from "@/utils/helpers/seo";
@@ -144,7 +143,7 @@ export default async function NewsDetail(props: INewsPage) {
                         alt={data.title}
                         style={{
                           maxWidth: isMobile ? "300px" : "700px",
-                          maxHidth: isMobile ? "300px" : "700px",
+                          maxHeight: isMobile ? "300px" : "700px",
                           width: "100%",
                           objectFit: "cover",
                         }}
