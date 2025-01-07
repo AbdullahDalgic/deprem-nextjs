@@ -139,18 +139,16 @@ export default async function NewsDetail(props: INewsPage) {
                     }}
                   >
                     <Zoom>
-                      <Image
+                      <img
                         src={generateImageUrl(data?.image_map)}
                         alt={data.title}
-                        style={{ width: "100%", objectFit: "cover" }}
-                        width={isMobile ? 300 : 700}
-                        height={isMobile ? 300 : 700}
+                        style={{
+                          maxWidth: isMobile ? "300px" : "700px",
+                          maxHidth: isMobile ? "300px" : "700px",
+                          width: "100%",
+                          objectFit: "cover",
+                        }}
                         loading="eager"
-                        sizes={
-                          isMobile
-                            ? "(max-width: 300px) 100vw, 300px"
-                            : "(max-width: 700px) 100vw, 700px"
-                        }
                       />
                       <figcaption>{data.title}</figcaption>
                     </Zoom>
