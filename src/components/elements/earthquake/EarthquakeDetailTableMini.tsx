@@ -89,7 +89,7 @@ const EarthquakeDetailTableMini = ({
               >
                 <a
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noreferrer nofollow"
                   title="Google Maps'te Göster"
                 >
                   <FaGoogle />
@@ -103,7 +103,7 @@ const EarthquakeDetailTableMini = ({
               >
                 <a
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noreferrer nofollow"
                   title="Yandex Maps'te Göster"
                 >
                   <FaYandexInternational />
@@ -117,7 +117,7 @@ const EarthquakeDetailTableMini = ({
               >
                 <a
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noreferrer nofollow"
                   title="OpenStreetMap'te Göster"
                 >
                   <SiOpenstreetmap />

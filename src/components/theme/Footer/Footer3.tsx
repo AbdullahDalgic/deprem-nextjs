@@ -58,7 +58,11 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
                     {Object.entries(SOCIAL).map(([key, value], i) => (
                       <li key={i}>
                         <Link href={value} legacyBehavior>
-                          <a target="_blank" rel="noreferrer" aria-label={key}>
+                          <a
+                            target="_blank"
+                            rel="noreferrer nofollow"
+                            aria-label={key}
+                          >
                             <i className={`fab fa-${key}`} /> {key}{" "}
                           </a>
                         </Link>

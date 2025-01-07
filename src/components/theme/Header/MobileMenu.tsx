@@ -84,7 +84,7 @@ const MobileMenu = ({ handleMobileMenuClose }: IMobileMenu) => {
             <ul className="list-wrap">
               {Object.entries(SOCIAL).map(([key, value], i) => (
                 <li key={i}>
-                  <Link href={value} aria-label={key}>
+                  <Link href={value} aria-label={key} rel="noreferrer nofollow">
                     <i className={`fab fa-${key}`} />
                   </Link>
                 </li>
