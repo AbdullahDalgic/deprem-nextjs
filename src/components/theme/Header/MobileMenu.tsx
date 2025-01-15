@@ -2,6 +2,9 @@ import { SOCIAL } from "@/utils/constants";
 import Link from "next/link";
 import Image from "next/image";
 import { generateAssetsUrl } from "@/utils/helpers/urls";
+import { APP_LINKS, APP_SOCIALS } from "@/utils/constants/links";
+import ImageButton from "@/components/elements/ImageButton";
+import { Box, Divider } from "@mui/material";
 
 interface IMobileMenu {
   handleMobileMenuClose: () => void;
@@ -81,7 +84,7 @@ const MobileMenu = ({ handleMobileMenuClose }: IMobileMenu) => {
             </ul>
           </div>
           <div className="social-links">
-            <ul className="list-wrap">
+            {/* <ul className="list-wrap">
               {Object.entries(SOCIAL).map(([key, value], i) => (
                 <li key={i}>
                   <Link href={value} aria-label={key} rel="noreferrer nofollow">
@@ -89,7 +92,26 @@ const MobileMenu = ({ handleMobileMenuClose }: IMobileMenu) => {
                   </Link>
                 </li>
               ))}
-            </ul>
+            </ul> */}
+            <Box
+              sx={{
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                gap: 1,
+                paddingTop: 2,
+              }}
+            >
+              {APP_LINKS.map((a, k) => (
+                <ImageButton key={k} {...a} />
+              ))}
+
+              <Divider orientation="vertical" variant="middle" flexItem />
+
+              {APP_SOCIALS.map((a, k) => (
+                <ImageButton key={k} {...a} />
+              ))}
+            </Box>
           </div>
         </nav>
       </div>

@@ -1,6 +1,7 @@
 import { Container } from "@mui/material";
 import Menu from "./Menu";
 import MobileMenu from "./MobileMenu";
+import HeaderTop from "./HeaderTop";
 
 interface IHeader3 {
   scroll: boolean;
@@ -20,6 +21,8 @@ export default function Header3({
 }: IHeader3) {
   return (
     <>
+      <HeaderTop />
+
       <header className="header__style-two header__style-three">
         <div
           id="header-fixed-height"

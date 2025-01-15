@@ -13,6 +13,14 @@ export const SOCIAL = {
   instagram: "https://instagram.com/depremwiki",
 };
 
+export const APPS = {
+  chrome:
+    "https://chromewebstore.google.com/detail/mmnjeofgmfdjkfkaepmobggfkagnfhop",
+  edge: "https://microsoftedge.microsoft.com/addons/detail/gapcedhhknejmfocgicgofkccgoeelnd",
+  android: "https://play.google.com/store/apps/details?id=com.depremwiki.app",
+  apple: "https://apps.apple.com/us/app/deprem-wiki/id6739726668",
+};
+
 export const META = {
   title: "Deprem Wiki | Türkiye ve Dünya'da meydana gelen son depremler",
   description:
