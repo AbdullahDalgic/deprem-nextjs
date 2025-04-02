@@ -155,6 +155,7 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
                 <a
                   target="_blank"
                   title="Abdullah Dalgıç | Yazılım Geliştirme & Danışmanlık"
+                  rel="dofollow"
                 >
                   Abdullah Dalgıç | Yazılım Geliştirme & Danışmanlık
                 </a>
