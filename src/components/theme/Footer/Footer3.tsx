@@ -148,6 +148,19 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
                 </div>
               </Grid2>
             </Grid2>
+
+            <Typography sx={{ fontSize: 12 }}>
+              Bu uygulama{" "}
+              <Link href={"https://abdullahdalgic.com.tr"} legacyBehavior>
+                <a
+                  target="_blank"
+                  title="Abdullah Dalgıç | Yazılım Geliştirme & Danışmanlık"
+                >
+                  Abdullah Dalgıç | Yazılım Geliştirme & Danışmanlık
+                </a>
+              </Link>{" "}
+              tarafından hazırlandı.
+            </Typography>
           </div>
         </Container>
       </footer>
