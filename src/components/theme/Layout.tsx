@@ -12,6 +12,14 @@ import NEXT_API from "@/utils/api/apiConfigNextjs";
 import "dayjs/locale/tr";
 import Scripts from "./Scripts";
 import Script from "next/script";
+import {
+  APP_NAME,
+  APPS,
+  AUTHOR,
+  LOGO,
+  META,
+  PUBLISHER,
+} from "@/utils/constants";
 
 interface ILayout {
   children: React.ReactNode;
@@ -25,6 +33,37 @@ interface ILayout {
   headTitle?: string;
   logoWhite?: boolean;
 }
+
+const jsonLdMobileApp = {
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  name: APP_NAME,
+  operatingSystem: "iOS, Android",
+  applicationCategory: "NewsApplication",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: 4.6,
+    reviewCount: 100,
+  },
+  offers: {
+    "@type": "Offer",
+    price: 0,
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+  },
+  description: META.description,
+  image: LOGO.white,
+  author: {
+    "@type": "Person",
+    name: AUTHOR,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: PUBLISHER,
+  },
+  downloadUrl: [APPS.android, APPS.apple],
+  sameAs: [APPS.android, APPS.apple],
+};
 
 export default function Layout({
   children,
@@ -107,6 +146,12 @@ export default function Layout({
 
       <Footer3 footerClass={footerClass} logoWhite={!!logoWhite} />
       <BackToTop />
+
+      <Script
+        id="mobile-app-ld+json"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdMobileApp) }}
+      />
 
       <Scripts />
 

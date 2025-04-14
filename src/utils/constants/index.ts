@@ -6,6 +6,9 @@
 export const API_URL = "https://api.deprem.wiki";
 export const SITE_URL = "https://deprem.wiki";
 export const EMAIL = "info@deprem.wiki";
+export const AUTHOR = "Abdullah Dalgıç";
+export const PUBLISHER = "Deprem Wiki";
+export const APP_NAME = "Deprem Wiki";
 
 export const SOCIAL = {
   facebook: "https://facebook.com/depremwiki",
@@ -26,6 +29,11 @@ export const META = {
   description:
     "Deprem Wiki, Türkiye ve Dünya'da meydana gelen son depremler hakkında bilgi alabileceğiniz bir platformdur.",
   keywords: "deprem, son depremler, deprem bilgileri, deprem wiki",
+};
+
+export const LOGO = {
+  white: "/assets/img/logo/w_logo.png",
+  black: "/assets/img/logo/logo.png",
 };
 
 export const PAGINATION_LIMIT = 9;
