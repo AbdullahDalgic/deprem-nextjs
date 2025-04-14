@@ -72,6 +72,9 @@ export default function Menu({
                 <Link href="/depremler">Depremler</Link>
               </li>
               <li>
+                <Link href="/hakkimizda">Hakkımızda</Link>
+              </li>
+              <li>
                 <Link href="/apps">Uygulamalar</Link>
               </li>
             </ul>

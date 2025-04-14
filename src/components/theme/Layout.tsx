@@ -42,9 +42,11 @@ const jsonLdMobileApp = {
   applicationCategory: "NewsApplication",
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: 4.6,
-    reviewCount: 100,
+    ratingValue: "4.8",
+    reviewCount: "1000+",
   },
+  isAccessibleForFree: true,
+  license: "https://opensource.org/licenses",
   offers: {
     "@type": "Offer",
     price: 0,
