@@ -43,7 +43,7 @@ const jsonLdMobileApp = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "1000+",
+    reviewCount: "1000",
   },
   isAccessibleForFree: true,
   license: "https://opensource.org/licenses",

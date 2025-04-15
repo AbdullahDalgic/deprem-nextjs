@@ -47,7 +47,7 @@ export default function Contact() {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.8",
-      reviewCount: "1000+",
+      reviewCount: "1000",
     },
     potentialAction: {
       "@type": "SearchAction",
