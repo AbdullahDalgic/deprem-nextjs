@@ -56,27 +56,67 @@ export default async function NewsDetail(props: INewsPage) {
   const canonical = generateNewsLink(data);
   const metaImage = generateImageUrl(data?.image);
 
+  // Deprem verileri için ikinci bir JSON-LD nesnesi oluşturalım
+  const earthquakeData = data?.earthquake
+    ? {
+        "@context": "https://schema.org",
+        "@type": "SpecialAnnouncement",
+        name: `${data?.earthquake?.location || ""} Depremi`,
+        category: "https://schema.org/DisasterEvent",
+        datePosted: data?.created_at,
+        expires: null,
+        text: `${data?.earthquake?.location || ""} bölgesinde ${
+          data?.earthquake?.magnitude || ""
+        } büyüklüğünde deprem meydana geldi.`,
+        spatialCoverage: {
+          "@type": "Place",
+          name: data?.earthquake?.location || "",
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: data?.earthquake?.lat || 0,
+            longitude: data?.earthquake?.lng || 0,
+          },
+        },
+        announcementLocation: {
+          "@type": "Place",
+          name: "Türkiye",
+        },
+      }
+    : null;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
     headline: data?.title || "",
+    name: data?.title || "",
+    description: data?.meta_description || "",
     datePublished: data?.created_at || "",
-    image: {
-      "@type": "ImageObject",
-      url: metaImage,
-      width: "600",
-      height: "600",
+    dateModified: data?.updated_at || data?.created_at || "",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonical,
     },
-    thumbnail: {},
-    articleBody: data?.content || "",
+    image: [metaImage],
     author: {
       "@type": "Organization",
       name: "Deprem Wiki",
+      url: SITE_URL,
     },
     publisher: {
       "@type": "Organization",
       name: "Deprem Wiki",
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/logo.png`,
+        width: "150",
+        height: "60",
+      },
     },
+    articleBody: data?.content?.replace(/<[^>]*>/g, "") || "",
+    articleSection: "Haberler",
+    keywords: data?.meta_keywords || "",
+    url: canonical,
   };
 
   if (!data) {
@@ -89,6 +129,12 @@ export default async function NewsDetail(props: INewsPage) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {earthquakeData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(earthquakeData) }}
+        />
+      )}
 
       <Breadcrumb
         breadcrumbCategory={"Haberler"}

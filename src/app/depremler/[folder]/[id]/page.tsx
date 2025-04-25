@@ -52,19 +52,66 @@ export default async function EarthquakeData({ params }: IEarthquakePage) {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    headline: title,
-    datePublished: data?.eventDate || "",
-    image: metaImage,
-    articleBody: description,
-    author: {
-      "@type": "Person",
-      name: "Admin",
+    "@type": "SpecialAnnouncement",
+    name: title,
+    category: "https://schema.org/DisasterEvent",
+    datePosted: data?.created_at || data?.eventDate || "",
+    expires: null,
+    text: description,
+    spatial: {
+      "@type": "Place",
+      name: data?.location || "",
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: data?.lat || 0,
+        longitude: data?.lng || 0,
+      },
+    },
+    announcementLocation: {
+      "@type": "Place",
+      name: "Türkiye",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonical,
     },
     publisher: {
       "@type": "Organization",
       name: "Deprem Wiki",
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/logo.png`,
+        width: "150",
+        height: "60",
+      },
     },
+    url: canonical,
+  };
+
+  const geoJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: title,
+    startDate: data?.eventDate || "",
+    description: description,
+    location: {
+      "@type": "Place",
+      name: data?.location || "",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "Türkiye",
+        addressRegion: data?.location?.split(" ")[0] || "",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: data?.lat || 0,
+        longitude: data?.lng || 0,
+        elevation: -(data?.depth || 0),
+      },
+    },
+    image: metaImage,
+    url: canonical,
   };
 
   if (!data) {
@@ -76,6 +123,10 @@ export default async function EarthquakeData({ params }: IEarthquakePage) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(geoJsonLd) }}
       />
 
       <Breadcrumb
