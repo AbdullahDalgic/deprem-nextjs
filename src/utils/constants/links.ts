@@ -39,4 +39,9 @@ export const APP_SOCIALS = [
     link: SOCIAL.instagram,
     image: "/assets/img/social/instagram.webp",
   },
+  {
+    title: "Teknofest Sosyal",
+    link: "https://sosyal.teknofest.app/@depremwiki",
+    image: "/assets/img/social/teknofest.png",
+  },
 ];

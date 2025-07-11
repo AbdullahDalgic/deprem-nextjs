@@ -88,7 +88,11 @@ export default async function SeoData(data: ISeo) {
       icon: generateAssetsUrl(`/assets/img/logo/logo.png`),
       apple: generateAssetsUrl(`/assets/img/logo/logo.png`),
     },
-    verification: {},
+    verification: {
+      other: {
+        "fediverse:creator": "@depremwiki@sosyal.teknofest.app",
+      },
+    },
   };
   return metaData;
 }
