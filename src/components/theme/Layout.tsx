@@ -149,6 +149,16 @@ export default function Layout({
       <Footer3 footerClass={footerClass} logoWhite={!!logoWhite} />
       <BackToTop />
 
+      <a
+        rel="me"
+        href="https://sosyal.teknofest.app/@depremwiki"
+        style={{
+          display: "none",
+        }}
+      >
+        teknofest sosyal
+      </a>
+
       <Script
         id="mobile-app-ld+json"
         type="application/ld+json"
