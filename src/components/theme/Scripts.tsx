@@ -15,7 +15,7 @@ const Scripts = () => {
 
   return (
     <>
-      <Script
+      {/* <Script
         strategy="lazyOnload"
         id="google-news"
         src="https://news.google.com/swg/js/v1/swg-basic.js"
@@ -31,7 +31,7 @@ const Scripts = () => {
             });
           });
         `}
-      </Script>
+      </Script> */}
     </>
   );
 };
