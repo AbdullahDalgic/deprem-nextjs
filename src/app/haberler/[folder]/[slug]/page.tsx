@@ -20,14 +20,14 @@ import {
 import { headers } from "next/headers";
 
 interface INewsPage {
-  params: {
+  params: Promise<{
     folder: string;
     slug: string;
-  };
+  }>;
 }
 
 export const generateMetadata = async (props: INewsPage) => {
-  const { folder, slug } = props.params;
+  const { folder, slug } = await props.params;
   const date = dayjs(folder).format("YYYY-MM-DD");
   const { data }: { data: INews } = await API.get(`/news/${date}/${slug}`);
 
@@ -43,12 +43,12 @@ export const generateMetadata = async (props: INewsPage) => {
 };
 
 export default async function NewsDetail(props: INewsPage) {
-  const headersList = headers();
+  const headersList = await headers();
   const isMobile = headersList.get("x-device_type")
     ? headersList.get("x-device_type") === "mobile"
     : false;
 
-  const { folder, slug } = props.params;
+  const { folder, slug } = await props.params;
   const date = dayjs(folder).format("YYYY-MM-DD");
   const { data }: { data: INews } = await API.get(`/news/${date}/${slug}`);
   dayjs.locale("tr");

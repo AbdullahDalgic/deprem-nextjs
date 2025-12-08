@@ -13,11 +13,11 @@ interface ISearchPage {
   data: IPagination<IEarthquake>;
 }
 
-const SearchPage = (props: ISearchPage) => {
+const SearchPage = async (props: ISearchPage) => {
   const { data, current_page, last_page }: IPagination<IEarthquake> =
     props.data || {};
 
-  const headersList = headers();
+  const headersList = await headers();
   const referer = headersList.get("referer") || "";
   const q = new URL(referer).searchParams.get("q") || "";
 

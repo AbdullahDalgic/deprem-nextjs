@@ -13,7 +13,7 @@ import { SITE_URL } from "@/utils/constants";
 export async function generateMetadata() {
   noStore();
 
-  const headersList = headers();
+  const headersList = await headers();
   const referer = headersList.get("referer") || SITE_URL;
 
   try {
@@ -38,7 +38,7 @@ export async function generateMetadata() {
 export default async function Search() {
   noStore();
 
-  const headersList = headers();
+  const headersList = await headers();
   const referer = headersList.get("referer") || SITE_URL;
   const url = new URL(referer);
 

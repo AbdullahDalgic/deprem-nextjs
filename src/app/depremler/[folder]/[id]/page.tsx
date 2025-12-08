@@ -21,14 +21,14 @@ import {
 } from "@/utils/helpers/earthquakeHelper";
 
 interface IEarthquakePage {
-  params: {
+  params: Promise<{
     folder: string;
     id: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: IEarthquakePage) {
-  const { id, folder } = params;
+  const { id, folder } = await params;
   const { data } = await API.get(`/earthquakes/${folder}/${id}`);
 
   if (!data) return notFound();
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: IEarthquakePage) {
 }
 
 export default async function EarthquakeData({ params }: IEarthquakePage) {
-  const { id, folder } = params;
+  const { id, folder } = await params;
   const { data } = await API.get(`/earthquakes/${folder}/${id}`);
   dayjs.locale("tr");
 

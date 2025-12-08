@@ -10,7 +10,6 @@ export async function GET(request: NextRequest) {
   const ipAddress: string =
     request.headers.get("cf-connecting-ip") ||
     request.headers.get("x-forwarded-for") ||
-    request.ip ||
     "";
   const userAgent = request.headers.get("user-agent") || "";
   const referrer =
