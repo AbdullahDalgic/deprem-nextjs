@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Script from "next/script";
-import { MdNavigateNext } from "react-icons/md";
+import { RiHomeLine, RiArrowRightSLine } from "react-icons/ri";
 
 interface BreadcrumbProps {
   breadcrumbCategory?: string;
@@ -53,25 +53,32 @@ export default function Breadcrumb({
   }
 
   return (
-    <div className="breadcrumb-area py-2">
-      <div className="container mx-auto max-w-6xl px-4">
-        <nav aria-label="breadcrumb" className="breadcrumb-content" style={{ padding: '10px 0' }}>
-          <ol className="flex items-center gap-1.5 flex-wrap text-sm">
+    <div className="breadcrumb-area bg-white/60 dark:bg-gray-900/60 backdrop-blur-[2px] border-b border-gray-200/40 dark:border-gray-800/40">
+      <div className="container mx-auto max-w-6xl">
+        <nav aria-label="breadcrumb" className="py-4">
+          <ol className="flex items-center gap-1 flex-wrap text-xs sm:text-sm">
+            {/* Home Link */}
             <li>
-              <Link href="/" className="flex items-center font-medium text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
-                Deprem Wiki
+              <Link
+                href="/"
+                className="group flex items-center gap-1 font-medium text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary-400 transition-colors duration-150"
+              >
+                <RiHomeLine className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                <span className="hidden sm:inline">Deprem Wiki</span>
+                <span className="sm:hidden">Ana</span>
               </Link>
             </li>
 
+            {/* Category */}
             {breadcrumbCategory && (
               <>
-                <li className="text-gray-400 dark:text-gray-600">
-                  <MdNavigateNext className="text-xs" />
+                <li className="flex items-center text-gray-300 dark:text-gray-600 mx-0.5">
+                  <RiArrowRightSLine className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </li>
                 <li>
                   <Link
                     href={breadcrumbCategoryLink || "#"}
-                    className="flex items-center font-medium text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+                    className="font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-400 transition-colors duration-150"
                   >
                     {breadcrumbCategory}
                   </Link>
@@ -79,15 +86,17 @@ export default function Breadcrumb({
               </>
             )}
 
+            {/* Post Title */}
             {breadcrumbPostTitle && (
               <>
-                <li className="text-gray-400 dark:text-gray-600">
-                  <MdNavigateNext className="text-xs" />
+                <li className="flex items-center text-gray-300 dark:text-gray-600 mx-0.5">
+                  <RiArrowRightSLine className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </li>
                 <li>
                   <Link
                     href={breadcrumbPostUrl || "#"}
-                    className="flex items-center font-medium text-gray-900 dark:text-white hover:text-primary transition-colors"
+                    className="font-semibold text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary-400 transition-colors duration-150 max-w-xs truncate block"
+                    title={breadcrumbPostTitle}
                   >
                     {breadcrumbPostTitle}
                   </Link>

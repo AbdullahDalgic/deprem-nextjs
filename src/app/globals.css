@@ -32,9 +32,12 @@ figure [data-rmiz] {
 
 /* Gradient Animation for Hero Title */
 @keyframes gradient {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
@@ -47,15 +50,20 @@ figure [data-rmiz] {
 
 /* Wave Animation */
 @keyframes wave {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(0) translateY(0);
   }
+
   25% {
     transform: translateX(-2%) translateY(-1%);
   }
+
   50% {
     transform: translateX(0) translateY(-2%);
   }
+
   75% {
     transform: translateX(2%) translateY(-1%);
   }
@@ -67,18 +75,23 @@ figure [data-rmiz] {
 
 /* Float Animation for Particles */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) translateX(0);
     opacity: 0.3;
   }
+
   25% {
     transform: translateY(-20px) translateX(10px);
     opacity: 0.6;
   }
+
   50% {
     transform: translateY(-40px) translateX(-10px);
     opacity: 0.4;
   }
+
   75% {
     transform: translateY(-20px) translateX(5px);
     opacity: 0.5;
@@ -115,4 +128,17 @@ figure [data-rmiz] {
 /* Prevent body scroll when mobile menu is open */
 .mobile-menu-visible {
   overflow: hidden;
+}
+
+/* Header Menu - Show from 991px onwards */
+@media (max-width: 990.98px) {
+  .tgmenu__navbar-wrap.tgmenu__main-menu {
+    display: none !important;
+  }
+}
+
+@media (min-width: 991px) {
+  .tgmenu__navbar-wrap.tgmenu__main-menu {
+    display: flex !important;
+  }
 }

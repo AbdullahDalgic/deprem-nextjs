@@ -38,7 +38,7 @@ export default async function Home() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/assets/img/bg/hero-1.jpg"
+            src="/assets/img/bg/hero-3.jpg"
             alt="Earth from space"
             fill
             className="object-cover"
@@ -49,30 +49,30 @@ export default async function Home() {
           {/* Image Overlay for better contrast */}
           <div className="absolute inset-0 bg-black/30 dark:bg-black/40"></div>
         </div>
-        
+
         {/* Semi-transparent Color Overlay - Primary colors with transparency */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary-600/60 via-primary-700/50 to-primary-800/60 dark:from-primary-900/70 dark:via-primary-800/60 dark:to-primary-900/70"></div>
-        
+
         {/* Animated Orb Shapes - More transparent */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-primary-400/15 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-300/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
-        
+
         {/* Animated Background Gradient Layers - More transparent */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.08),transparent_60%)] animate-pulse"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,255,255,0.06),transparent_60%)] animate-pulse" style={{ animationDelay: '1s' }}></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.04),transparent_70%)] animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
-        
+
         {/* Pattern Overlay - Subtle */}
         <div className="absolute inset-0 bg-[url('/assets/img/pattern.svg')] opacity-[0.08] dark:opacity-[0.05]"></div>
-        
+
         {/* Animated Grid Pattern - Subtle matrix style */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-        
+
         {/* Animated Wave Pattern - More transparent */}
         <div className="absolute inset-0 opacity-5">
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1440 600" preserveAspectRatio="none">
@@ -80,10 +80,10 @@ export default async function Home() {
             <path d="M0,400 Q360,300 720,400 T1440,400 L1440,600 L0,600 Z" fill="white" className="animate-wave" style={{ animationDelay: '1s' }}></path>
           </svg>
         </div>
-        
+
         {/* Glassmorphism Overlay with Gradient - More transparent to show background */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-600/20 to-primary-800/30 dark:via-primary-900/25 dark:to-primary-900/35"></div>
-        
+
         {/* Animated Particles Effect - More visible */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
@@ -99,7 +99,7 @@ export default async function Home() {
             ></div>
           ))}
         </div>
-        
+
         {/* Content Container with Enhanced Glassmorphism */}
         <div className="relative container mx-auto max-w-6xl px-4 py-16 md:py-24 z-10">
           <div className="text-center mb-12">
@@ -108,19 +108,19 @@ export default async function Home() {
               <div className="absolute inset-0 bg-white/20 rounded-full blur-xl animate-pulse"></div>
               <RiEarthquakeLine className="text-4xl md:text-5xl text-white drop-shadow-2xl relative z-10" />
             </div>
-            
+
             {/* Title with enhanced text shadow and glow */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight drop-shadow-2xl relative">
-              <span className="relative z-10">Türkiye Deprem</span>
-              <span className="block text-primary-100 dark:text-primary-200 bg-gradient-to-r from-white via-primary-100 to-white bg-clip-text text-transparent animate-gradient relative z-10 mt-2">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-normal md:leading-tight drop-shadow-2xl relative">
+              <span className="relative z-10 block">Türkiye Deprem</span>
+              <span className="block text-primary-100 dark:text-primary-200 bg-gradient-to-r from-white via-primary-100 to-white bg-clip-text text-transparent animate-gradient relative z-10 mt-2 leading-normal md:leading-tight">
                 Bilgi Merkezi
               </span>
               {/* Text glow effect */}
-              <span className="absolute inset-0 text-4xl md:text-5xl lg:text-6xl font-bold text-white/20 blur-xl -z-10">
+              <span className="absolute inset-0 text-4xl md:text-5xl lg:text-6xl font-bold text-white/20 blur-xl -z-10 leading-normal md:leading-tight">
                 Türkiye Deprem<br />Bilgi Merkezi
               </span>
             </h1>
-            
+
             {/* Description with enhanced glassmorphism background */}
             <div className="inline-block px-8 py-4 rounded-2xl bg-white/15 dark:bg-white/8 backdrop-blur-lg border-2 border-white/25 dark:border-white/15 shadow-xl mb-4 hover:bg-white/20 dark:hover:bg-white/12 transition-all duration-300">
               <p className="text-lg md:text-xl lg:text-2xl text-white max-w-2xl mx-auto font-semibold drop-shadow-lg">
@@ -128,13 +128,13 @@ export default async function Home() {
               </p>
             </div>
           </div>
-          
+
           {/* İstatistikler with enhanced glassmorphism */}
           <div className="relative">
             <HeroStats earthquakes={last_earthquakes} />
           </div>
         </div>
-        
+
         {/* Bottom Wave Decoration */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg className="w-full h-20 md:h-32" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,7 +165,7 @@ export default async function Home() {
             link="/haberler"
             linkText="Tüm Haberler"
           />
-          
+
           {news && news.length > 0 ? (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
@@ -174,8 +174,8 @@ export default async function Home() {
                 ))}
               </div>
               <div className="text-center mt-12">
-                <Link 
-                  href="/haberler" 
+                <Link
+                  href="/haberler"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   <span>Tüm Haberleri Gör</span>
