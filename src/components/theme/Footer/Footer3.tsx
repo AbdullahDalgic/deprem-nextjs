@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SOCIAL } from "@/utils/constants";
-import { Box, Container, Grid2, Typography } from "@mui/material";
 
 interface IFooter3 {
   footerClass: string;
@@ -12,20 +11,17 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
   return (
     <>
       <footer className={`footer-area ${footerClass}`}>
-        <Container maxWidth="lg" sx={{ mt: 4 }}>
+        <div className="container mx-auto max-w-6xl px-4 mt-8">
           <div className="footer__logo-wrap">
-            <Grid2 container spacing={2}>
-              <Grid2 size={{ xs: 12, md: 6 }}>
-                <Box
-                  display={"flex"}
-                  justifyContent={{ xs: "center", md: "flex-start" }}
-                >
+            <div className="grid grid-cols-12 gap-4">
+              <div className="col-span-12 md:col-span-6">
+                <div className="flex justify-center md:justify-start">
                   <Link
                     href="/"
                     className={logoWhite ? "logo-dark" : "logo-light"}
                     title="home"
                   >
-                    <Box alignItems={"center"} gap={2} display={"flex"}>
+                    <div className="flex items-center gap-2">
                       <Image
                         src={`/assets/img/logo/${
                           logoWhite ? "logo" : "w_logo"
@@ -34,98 +30,76 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
                         width={50}
                         height={50}
                         priority={false}
-                        style={{ width: "auto" }}
+                        className="w-auto"
                       />
 
-                      <Typography
-                        style={{ color: "#fff" }}
-                        variant="h5"
-                        component={"h1"}
-                      >
+                      <h1 className="text-white text-xl font-bold">
                         Deprem Wiki - Türkiye
-                      </Typography>
-                    </Box>
+                      </h1>
+                    </div>
                   </Link>
-                </Box>
-              </Grid2>
-              <Grid2
-                size={{ xs: 12, md: 6 }}
-                display={"flex"}
-                justifyContent={{ xs: "center", md: "flex-end" }}
-              >
+                </div>
+              </div>
+              <div className="col-span-12 md:col-span-6 flex justify-center md:justify-end">
                 <div className="footer__social">
                   <ul className="list-wrap">
                     {Object.entries(SOCIAL).map(([key, value], i) => (
                       <li key={i}>
-                        <Link href={value} legacyBehavior>
-                          <a
-                            target="_blank"
-                            rel="noreferrer nofollow"
-                            aria-label={key}
-                          >
-                            <i className={`fab fa-${key}`} /> {key}{" "}
-                          </a>
+                        <Link href={value} target="_blank" rel="noreferrer nofollow" aria-label={key}>
+                          <i className={`fab fa-${key}`} /> {key}{" "}
                         </Link>
                       </li>
                     ))}
                   </ul>
                 </div>
-              </Grid2>
+              </div>
 
-              <Grid2 size={{ xs: 12, md: 12 }}>
-                <Box display={"flex"} flexDirection={"column"} gap={2}>
-                  <Typography variant="body2" component={"p"}>
+              <div className="col-span-12">
+                <div className="flex flex-col gap-4">
+                  <p className="text-sm text-gray-300 dark:text-gray-400">
                     Depremler, yaşamı etkileyen ciddi doğal afetlerdir. Bu
                     nedenle, toplumu bilgilendirmek ve hazırlıklı hale getirmek
                     amacıyla geliştirdiğimiz bu açık kaynak yazılımlar ile,
                     depremler hakkında en güncel ve doğru bilgileri sağlamayı
                     hedeflemektedir. Ayrıca, bu platforma entegre ettiğimiz{" "}
-                    <Link href="/apps" legacyBehavior target="_blank">
-                      <a style={{ color: "#777777" }}>tarayıcı uzantısı</a>
+                    <Link href="/apps" target="_blank" className="text-gray-400 hover:text-gray-300">
+                      tarayıcı uzantısı
                     </Link>{" "}
                     sayesinde kullanıcılarımız, deprem haberlerine anlık erişim
                     sağlayabilir.
-                  </Typography>
+                  </p>
 
-                  <Typography variant="body2" component={"p"}>
+                  <p className="text-sm text-gray-300 dark:text-gray-400">
                     Sosyal medya hesaplarımız (Instagram, Facebook, Twitter)
                     aracılığıyla da topluluk ile etkileşimde bulunarak, deprem
                     güvenliği ve farkındalığı konusunda bilinçlendirme
                     faaliyetleri yürütmekteyiz. Amacımız, her bireyin bu konuda
                     bilgi sahibi olması ve olası bir deprem durumuna karşı
                     hazırlıklı olmasını sağlamak.
-                  </Typography>
+                  </p>
 
-                  <Typography variant="body2" component={"p"}>
+                  <p className="text-sm text-gray-300 dark:text-gray-400">
                     Birlikte hareket ederek daha güvenli bir toplum oluşturmayı
                     umuyoruz. Projemiz hakkında daha fazla bilgi almak veya
                     katkıda bulunmak isterseniz, lütfen sosyal medya
                     hesaplarımızı takip edin veya iletişime geçin.
-                  </Typography>
-                </Box>
-              </Grid2>
-            </Grid2>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="footer__copyright">
-            <Grid2 container spacing={2}>
-              <Grid2
-                size={{ xs: 12, md: 4 }}
-                display={"flex"}
-                justifyContent={{ xs: "center", md: "flex-start" }}
-              >
-                <Typography variant="body2" component={"p"}>
+            <div className="grid grid-cols-12 gap-4">
+              <div className="col-span-12 md:col-span-4 flex justify-center md:justify-start">
+                <p className="text-sm text-gray-300 dark:text-gray-400">
                   © {new Date().getFullYear()}{" "}
-                  <Link href="https://deprem.wiki" legacyBehavior>
-                    <a style={{ color: "#777777" }}>deprem.wiki</a>
+                  <Link href="https://deprem.wiki" className="text-gray-400 hover:text-gray-300">
+                    deprem.wiki
                   </Link>{" "}
                   - Tüm Hakları Saklıdır.
-                </Typography>
-              </Grid2>
-              <Grid2
-                size={{ xs: 12, md: 8 }}
-                display={"flex"}
-                justifyContent={{ xs: "center", md: "flex-end" }}
-              >
+                </p>
+              </div>
+              <div className="col-span-12 md:col-span-8 flex justify-center md:justify-end">
                 <div className="copyright__menu">
                   <ul className="list-wrap">
                     <li>
@@ -146,24 +120,24 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
                     </li>
                   </ul>
                 </div>
-              </Grid2>
-            </Grid2>
+              </div>
+            </div>
 
-            <Typography sx={{ fontSize: 12 }}>
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-4">
               Bu uygulama{" "}
-              <Link href={"https://abdullahdalgic.com.tr"} legacyBehavior>
-                <a
-                  target="_blank"
-                  title="Abdullah Dalgıç | Yazılım Geliştirme & Danışmanlık"
-                  rel="dofollow"
-                >
-                  Abdullah Dalgıç | Yazılım Geliştirme & Danışmanlık
-                </a>
+              <Link
+                href={"https://abdullahdalgic.com.tr"}
+                target="_blank"
+                title="Abdullah Dalgıç | Yazılım Geliştirme & Danışmanlık"
+                rel="dofollow"
+                className="hover:text-gray-300"
+              >
+                Abdullah Dalgıç | Yazılım Geliştirme & Danışmanlık
               </Link>{" "}
               tarafından hazırlandı.
-            </Typography>
+            </p>
           </div>
-        </Container>
+        </div>
       </footer>
     </>
   );

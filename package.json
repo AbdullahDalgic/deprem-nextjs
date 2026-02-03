@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.13.0",
     "@maxmind/geoip2-node": "^5.0.0",
     "@mui/material": "^6.1.1",
+    "@tailwindcss/typography": "^0.5.19",
     "dayjs": "^1.11.13",
     "next": "15.5.7",
     "react": "^18",

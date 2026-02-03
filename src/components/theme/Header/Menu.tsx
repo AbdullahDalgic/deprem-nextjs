@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
 // import ThemeSwitch from "@/components/elements/ThemeSwitch";
@@ -19,34 +18,29 @@ export default function Menu({
   logoAlt,
   white,
 }: IMenu) {
-  const [searchToggle, setSearchToggle] = useState(false);
-  const searchHandle = () => setSearchToggle(!searchToggle);
-
   return (
     <>
       <div className="tgmenu__wrap">
         <nav className="tgmenu__nav">
           {logoAlt && (
-            <div className="d-flex gap-4 align-items-center">
+            <div className="flex gap-4 items-center">
               <Link href="/" title="home">
-                <Box alignItems={"center"} gap={2} display={"flex"}>
+                <div className="flex items-center gap-2">
                   <Image
                     src={`/assets/img/logo/${white ? "w_logo" : "logo"}.png`}
                     alt="Logo"
                     width={50}
                     height={50}
                     priority={true}
-                    style={{ width: "auto" }}
+                    className="w-auto"
                   />
-                  <Typography
-                    style={{ color: white ? "#fff" : "#000" }}
-                    variant="h5"
-                    component={"h1"}
-                    fontSize={[16, 18]}
+                  <h1
+                    className={`text-base sm:text-lg font-bold ${white ? "text-white" : "text-black dark:text-white"
+                      }`}
                   >
                     Deprem Wiki - Türkiye
-                  </Typography>
-                </Box>
+                  </h1>
+                </div>
               </Link>
             </div>
           )}
@@ -57,54 +51,25 @@ export default function Menu({
               </a>
             </div>
           )}
-          <Box
-            className="tgmenu__navbar-wrap tgmenu__main-menu"
-            display={{ xs: "none", md: "flex" }}
-          >
-            <ul className="navigation">
+          <div className="hidden md:flex tgmenu__navbar-wrap tgmenu__main-menu ml-auto">
+            <ul className="navigation" style={{ margin: '0 0 0 auto' }}>
               <li>
-                <Link href="/">Anasayfa</Link>
+                <Link href="/" prefetch={true}>Anasayfa</Link>
               </li>
               <li>
-                <Link href="/haberler">Haberler</Link>
+                <Link href="/haberler" prefetch={true}>Haberler</Link>
               </li>
               <li>
-                <Link href="/depremler">Depremler</Link>
+                <Link href="/depremler" prefetch={true}>Depremler</Link>
               </li>
               <li>
-                <Link href="/hakkimizda">Hakkımızda</Link>
+                <Link href="/hakkimizda" prefetch={true}>Hakkımızda</Link>
               </li>
               <li>
-                <Link href="/apps">Uygulamalar</Link>
+                <Link href="/apps" prefetch={true}>Uygulamalar</Link>
               </li>
-            </ul>
-          </Box>
-          <div className="tgmenu__action">
-            <ul className="list-wrap">
-              {/* <li className="mode-switcher">
-                <ThemeSwitch />
-              </li> */}
-
-              <li className="header-search">
-                <Link href="#" aria-label="search">
-                  <i
-                    className={`${
-                      searchToggle ? "far fa-search fa-times" : "far fa-search"
-                    } `}
-                    onClick={searchHandle}
-                  />
-                </Link>
-                <div className="header__style-two">
-                  <div
-                    className={`header__top-search ${
-                      searchToggle ? "d-block" : "d-none"
-                    }`}
-                  >
-                    <form action="#">
-                      <input type="text" placeholder="Search here..." />
-                    </form>
-                  </div>
-                </div>
+              <li>
+                <Link href="/ara" prefetch={true}>Ara</Link>
               </li>
             </ul>
           </div>

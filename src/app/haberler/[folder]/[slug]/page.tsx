@@ -2,7 +2,6 @@ import { SITE_URL } from "@/utils/constants";
 import Link from "next/link";
 import API from "@/utils/api/apiConfig";
 import dayjs from "dayjs";
-import { Box, Container, Grid2 } from "@mui/material";
 import Zoom from "react-medium-image-zoom";
 import SeoData from "@/utils/helpers/seo";
 import ShareLeftSide from "@/components/elements/share/ShareLeftSide";
@@ -17,7 +16,9 @@ import {
   generateNewsLink,
   generateSearchLink,
 } from "@/utils/helpers/urls";
-import { headers } from "next/headers";
+import Image from "next/image";
+import { PiEyesFill } from "react-icons/pi";
+import { FaRegCommentDots } from "react-icons/fa";
 
 interface INewsPage {
   params: Promise<{
@@ -43,11 +44,6 @@ export const generateMetadata = async (props: INewsPage) => {
 };
 
 export default async function NewsDetail(props: INewsPage) {
-  const headersList = await headers();
-  const isMobile = headersList.get("x-device_type")
-    ? headersList.get("x-device_type") === "mobile"
-    : false;
-
   const { folder, slug } = await props.params;
   const date = dayjs(folder).format("YYYY-MM-DD");
   const { data }: { data: INews } = await API.get(`/news/${date}/${slug}`);
@@ -59,29 +55,28 @@ export default async function NewsDetail(props: INewsPage) {
   // Deprem verileri için ikinci bir JSON-LD nesnesi oluşturalım
   const earthquakeData = data?.earthquake
     ? {
-        "@context": "https://schema.org",
-        "@type": "SpecialAnnouncement",
-        name: `${data?.earthquake?.location || ""} Depremi`,
-        category: "https://schema.org/DisasterEvent",
-        datePosted: data?.created_at,
-        expires: null,
-        text: `${data?.earthquake?.location || ""} bölgesinde ${
-          data?.earthquake?.magnitude || ""
+      "@context": "https://schema.org",
+      "@type": "SpecialAnnouncement",
+      name: `${data?.earthquake?.location || ""} Depremi`,
+      category: "https://schema.org/DisasterEvent",
+      datePosted: data?.created_at,
+      expires: null,
+      text: `${data?.earthquake?.location || ""} bölgesinde ${data?.earthquake?.magnitude || ""
         } büyüklüğünde deprem meydana geldi.`,
-        spatialCoverage: {
-          "@type": "Place",
-          name: data?.earthquake?.location || "",
-          geo: {
-            "@type": "GeoCoordinates",
-            latitude: data?.earthquake?.lat || 0,
-            longitude: data?.earthquake?.lng || 0,
-          },
+      spatialCoverage: {
+        "@type": "Place",
+        name: data?.earthquake?.location || "",
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: data?.earthquake?.lat || 0,
+          longitude: data?.earthquake?.lng || 0,
         },
-        announcementLocation: {
-          "@type": "Place",
-          name: "Türkiye",
-        },
-      }
+      },
+      announcementLocation: {
+        "@type": "Place",
+        name: "Türkiye",
+      },
+    }
     : null;
 
   const jsonLd = {
@@ -123,6 +118,8 @@ export default async function NewsDetail(props: INewsPage) {
     return notFound();
   }
 
+  const tags = data.meta_keywords?.split(",").filter(Boolean) || [];
+
   return (
     <>
       <script
@@ -136,119 +133,146 @@ export default async function NewsDetail(props: INewsPage) {
         />
       )}
 
-      <Breadcrumb
-        breadcrumbCategory={"Haberler"}
-        breadcrumbCategoryLink={`${SITE_URL}/haberler`}
-        breadcrumbPostUrl={canonical}
-        breadcrumbPostTitle={data.title}
-      />
+      <div className="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+        <Breadcrumb
+          breadcrumbCategory={"Haberler"}
+          breadcrumbCategoryLink={`${SITE_URL}/haberler`}
+          breadcrumbPostUrl={canonical}
+          breadcrumbPostTitle={data.title}
+        />
+      </div>
 
-      <section className="blog-datas-area pt-5 pb-100">
-        <Container maxWidth="lg" sx={{ mt: 2 }}>
-          <Grid2 container spacing={2}>
-            <Grid2
-              size={{ lg: 1, md: 1, sm: 0, xs: 0 }}
-              display={{ md: "flex", sm: "none", xs: "none" }}
-              className="blog-details-social"
-            >
+      <section className="py-6 md:py-8 bg-white dark:bg-gray-950">
+        <div className="relative">
+          {/* Sol Sidebar - Share Buttons (Desktop) - Container dışında, absolute */}
+          <div className="hidden md:block absolute top-0" style={{ left: 'max(1rem, calc((100vw - 1152px) / 2 - 80px))' }}>
+            <div className="sticky top-24">
               <ShareLeftSide canonical={canonical} title={data.title} />
-            </Grid2>
-            <Grid2 size={{ lg: 8, md: 8, sm: 12 }}>
-              <div className="blog-details-wrap">
-                <article>
-                  <h1 className="title">{data.title}</h1>
+            </div>
+          </div>
 
-                  <ul className="tgbanner__content-meta list-wrap">
-                    <li>
-                      <time dateTime={data.created_at}>
-                        {dayjs(data.created_at).format("DD MMMM YYYY")}
-                      </time>{" "}
-                      tarihinde, saat{" "}
-                      <time dateTime={data.created_at}>
-                        {dayjs(data.created_at).format("HH:mm")}
-                      </time>
-                      'de yayımlandı.
-                    </li>
-                    <li>0 Yorum</li>
-                    <li>{data.views} Okuma</li>
-                  </ul>
+          <div className="container mx-auto max-w-6xl px-4">
+            <div className="grid grid-cols-12 gap-6 lg:gap-8">
+              {/* Ana İçerik */}
+              <main className="col-span-12 lg:col-span-8">
+                <article className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+                  {/* Başlık ve Meta Bilgiler */}
+                  <div className="px-6 md:px-8 pt-6 md:pt-8 pb-5 md:pb-6 border-b border-gray-200 dark:border-gray-700">
+                    <h1 className="text-2xl md:text-1xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-snug">
+                      {data.title}
+                    </h1>
 
-                  <figure
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      maxHeight: "300px",
-                      width: "100%",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <Zoom>
-                      <img
-                        src={generateImageUrl(data?.image_map)}
-                        alt={data.title}
-                        style={{
-                          maxWidth: isMobile ? "500px" : "700px",
-                          maxHeight: isMobile ? "300px" : "700px",
-                          width: "100%",
-                          objectFit: "cover",
-                        }}
-                        loading="eager"
-                      />
-                      <figcaption>{data.title}</figcaption>
-                    </Zoom>
-                  </figure>
-
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: data.content,
-                    }}
-                  />
-
-                  <Box sx={{ mt: 5 }}>
-                    <h3>Deprem Bilgileri</h3>
-                    <EarthquakeDataTableMini earthquake={data?.earthquake} />
-                  </Box>
-                </article>
-                <div className="blog-details-bottom">
-                  <Grid2 container spacing={2}>
-                    <Grid2
-                      size={{ lg: 8, md: 8, sm: 12 }}
-                      sx={{
-                        display: "flex",
-                        flexDirection: { md: "row", sm: "column" },
-                        gap: 2,
-                      }}
-                    >
-                      <div className="blog-details-tags">
-                        <ul className="list-wrap mb-0">
-                          {data.meta_keywords
-                            .split(",")
-                            .map((tag: string, i: number) => (
-                              <li key={i}>
-                                <Link href={generateSearchLink(tag)}>
-                                  {tag}
-                                </Link>
-                              </li>
-                            ))}
-                        </ul>
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+                      <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                        <i className="far fa-calendar-alt text-primary"></i>
+                        <time dateTime={data.created_at} className="font-medium">
+                          {dayjs(data.created_at).format("DD MMMM YYYY")}
+                        </time>
+                        <span className="text-gray-400 dark:text-gray-600">•</span>
+                        <time dateTime={data.created_at} className="font-medium">
+                          {dayjs(data.created_at).format("HH:mm")}
+                        </time>
                       </div>
-                    </Grid2>
-                    <Grid2 size={{ lg: 4, md: 4, sm: 12 }}>
-                      <ShareBottomSide
-                        canonical={canonical}
-                        title={data.title}
-                      />
-                    </Grid2>
-                  </Grid2>
-                </div>
-              </div>
-            </Grid2>
-            <Grid2 size={{ lg: 3, md: 3, sm: 12 }}>
-              <LastNewsRightBar />
-            </Grid2>
-          </Grid2>
-        </Container>
+                      <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                        <PiEyesFill className="text-lg text-primary" />
+                        <span className="font-medium">{data.views} Okuma</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                        <FaRegCommentDots className="text-lg text-primary" />
+                        <span className="font-medium">0 Yorum</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Görsel */}
+                  <div className="relative w-full bg-gray-100 dark:bg-gray-700 overflow-hidden cursor-zoom-in">
+                    <div className="max-h-96 md:max-h-[400px] lg:max-h-[450px] overflow-hidden">
+                      <Zoom>
+                        <Image
+                          src={generateImageUrl(data?.image_map)}
+                          alt={data.title}
+                          width={1200}
+                          height={600}
+                          className="w-full h-auto object-cover"
+                          priority
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 800px"
+                        />
+                      </Zoom>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/60 to-transparent flex items-end justify-center pb-2 pointer-events-none">
+                      <span className="text-white text-xs font-medium flex items-center gap-2">
+                        <i className="fas fa-search-plus"></i>
+                        Tam ekran için tıklayın
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* İçerik */}
+                  <div className="px-6 md:px-8 py-6 md:py-8">
+                    <div
+                      className="prose prose-base dark:prose-invert max-w-none
+                      prose-headings:text-gray-900 dark:prose-headings:text-white prose-headings:font-bold
+                      prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed
+                      prose-a:text-primary dark:prose-a:text-primary-400 prose-a:font-medium
+                      prose-a:no-underline hover:prose-a:underline
+                      prose-strong:text-gray-900 dark:prose-strong:text-white prose-strong:font-bold
+                      prose-img:rounded-lg prose-img:shadow-md prose-img:my-6
+                      prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-gray-50 dark:prose-blockquote:bg-gray-800 prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:rounded-r-lg
+                      prose-ul:text-gray-700 dark:prose-ul:text-gray-300 prose-ul:my-4
+                      prose-ol:text-gray-700 dark:prose-ol:text-gray-300 prose-ol:my-4
+                      prose-li:my-1"
+                      dangerouslySetInnerHTML={{
+                        __html: data.content,
+                      }}
+                    />
+
+                    {/* Deprem Bilgileri */}
+                    {data?.earthquake && (
+                      <div className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-700">
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-5">
+                          Deprem Bilgileri
+                        </h3>
+                        <EarthquakeDataTableMini earthquake={data?.earthquake} />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Alt Kısım - Tags ve Share */}
+                  <div className="px-6 md:px-8 py-5 md:py-6 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                      {/* Tags */}
+                      {tags.length > 0 && (
+                        <div className="flex-1">
+                          <div className="flex flex-wrap gap-2">
+                            {tags.map((tag: string, i: number) => (
+                              <Link
+                                key={i}
+                                href={generateSearchLink(tag.trim())}
+                                className="inline-flex items-center px-3 py-1.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200"
+                              >
+                                #{tag.trim()}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Share Buttons (Mobile/Tablet) */}
+                      <div className="lg:hidden">
+                        <ShareBottomSide canonical={canonical} title={data.title} />
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </main>
+
+              {/* Sağ Sidebar - Son Haberler */}
+              <aside className="col-span-12 lg:col-span-4">
+                <LastNewsRightBar />
+              </aside>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

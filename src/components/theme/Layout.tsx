@@ -1,5 +1,4 @@
 "use client";
-import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { usePathname } from "next/navigation";
@@ -77,29 +76,38 @@ export default function Layout({
   const pathname = usePathname();
   const [loading, setLoading] = useState(false);
   const { theme: themeMode } = useTheme();
-  const theme = createTheme({
-    palette: {
-      mode: themeMode == "dark-theme" ? "dark" : "light",
-    },
-    typography: {
-      fontFamily: "Roboto, sans-serif",
-    },
-  });
+
+  // Dark mode class'ını html elementine ekle/kaldır
+  useEffect(() => {
+    const root = document.documentElement;
+    if (themeMode === "dark-theme") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+  }, [themeMode]);
 
   useEffect(() => {
     dayjs.locale("tr");
-    setTimeout(() => {
-      setLoading(true);
-    }, 1000);
+    setLoading(true);
   }, []);
 
+  // Visitor log - debounce ile optimize edildi
   useEffect(() => {
     if (!loading) return;
-    try {
-      NEXT_API.get("/visitor-log");
-    } catch (error) {
-      console.error("Failed to log visitor data.");
-    }
+    
+    // Debounce için timer
+    const timer = setTimeout(() => {
+      try {
+        NEXT_API.get("/visitor-log").catch(() => {
+          // Silent fail - visitor log kritik değil
+        });
+      } catch (error) {
+        // Silent fail
+      }
+    }, 500); // 500ms debounce
+
+    return () => clearTimeout(timer);
   }, [loading, pathname]);
 
   const handleMobileMenuOpen = () => {
@@ -108,7 +116,30 @@ export default function Layout({
 
   const handleMobileMenuClose = () => {
     document.body.classList.remove("mobile-menu-visible");
+    // Ensure backdrop is also removed
+    if (typeof window !== "undefined") {
+      const backdrop = document.querySelector(".mobile-menu-backdrop");
+      if (backdrop) {
+        backdrop.classList.remove("opacity-100", "pointer-events-auto", "visible");
+        backdrop.classList.add("opacity-0", "pointer-events-none");
+      }
+    }
   };
+
+  // Clean up on mount/unmount
+  useEffect(() => {
+    // Remove mobile menu class on mount if it exists
+    if (typeof document !== "undefined") {
+      document.body.classList.remove("mobile-menu-visible");
+    }
+    
+    return () => {
+      // Clean up on unmount
+      if (typeof document !== "undefined") {
+        document.body.classList.remove("mobile-menu-visible");
+      }
+    };
+  }, []);
 
   const handleSidebarOpen = () => {
     document.body.classList.add("offCanvas__menu-visible");
@@ -123,17 +154,34 @@ export default function Layout({
   const handleLangToggle = () => setLangToggle(!langToggle);
   const [scroll, setScroll] = useState<boolean>(false);
   useEffect(() => {
-    document.addEventListener("scroll", () => {
+    const handleScroll = () => {
       const scrollCheck = window.scrollY > 100;
-      if (scrollCheck !== !!scroll) {
-        setScroll(scrollCheck);
+      setScroll((prev) => {
+        if (scrollCheck !== prev) {
+          return scrollCheck;
+        }
+        return prev;
+      });
+    };
+
+    // Throttle için
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
       }
-    });
-  });
+    };
+
+    window.addEventListener("scroll", throttledScroll, { passive: true });
+    return () => window.removeEventListener("scroll", throttledScroll);
+  }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <div className="min-h-screen bg-background text-foreground">
       <Header3
         handleMobileMenuOpen={handleMobileMenuOpen}
         handleMobileMenuClose={handleMobileMenuClose}
@@ -152,9 +200,7 @@ export default function Layout({
       <a
         rel="me"
         href="https://sosyal.teknofest.app/@depremwiki"
-        style={{
-          display: "none",
-        }}
+        className="hidden"
       >
         teknofest sosyal
       </a>
@@ -166,6 +212,6 @@ export default function Layout({
       />
 
       <Scripts />
-    </ThemeProvider>
+    </div>
   );
 }

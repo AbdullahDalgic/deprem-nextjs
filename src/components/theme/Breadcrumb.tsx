@@ -1,4 +1,3 @@
-import { Breadcrumbs, Container, Typography } from "@mui/material";
 import Link from "next/link";
 import Script from "next/script";
 import { MdNavigateNext } from "react-icons/md";
@@ -54,42 +53,50 @@ export default function Breadcrumb({
   }
 
   return (
-    <div className="breadcrumb-area">
-      <Container maxWidth="lg">
-        <Breadcrumbs
-          aria-label="breadcrumb"
-          className="breadcrumb-content"
-          separator={<MdNavigateNext fontSize="small" />}
-        >
-          <Link style={{ display: "flex", alignItems: "center" }} href="/">
-            <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-              Deprem Wiki
-            </Typography>
-          </Link>
+    <div className="breadcrumb-area py-2">
+      <div className="container mx-auto max-w-6xl px-4">
+        <nav aria-label="breadcrumb" className="breadcrumb-content" style={{ padding: '10px 0' }}>
+          <ol className="flex items-center gap-1.5 flex-wrap text-sm">
+            <li>
+              <Link href="/" className="flex items-center font-medium text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                Deprem Wiki
+              </Link>
+            </li>
 
-          {breadcrumbCategory && (
-            <Link
-              style={{ display: "flex", alignItems: "center" }}
-              href={breadcrumbCategoryLink || "#"}
-            >
-              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                {breadcrumbCategory}
-              </Typography>
-            </Link>
-          )}
+            {breadcrumbCategory && (
+              <>
+                <li className="text-gray-400 dark:text-gray-600">
+                  <MdNavigateNext className="text-xs" />
+                </li>
+                <li>
+                  <Link
+                    href={breadcrumbCategoryLink || "#"}
+                    className="flex items-center font-medium text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+                  >
+                    {breadcrumbCategory}
+                  </Link>
+                </li>
+              </>
+            )}
 
-          {breadcrumbPostTitle && (
-            <Link
-              style={{ display: "flex", alignItems: "center" }}
-              color="inherit"
-              href={breadcrumbPostUrl || "#"}
-              legacyBehavior
-            >
-              <a style={{ fontWeight: "bold" }}>{breadcrumbPostTitle}</a>
-            </Link>
-          )}
-        </Breadcrumbs>
-      </Container>
+            {breadcrumbPostTitle && (
+              <>
+                <li className="text-gray-400 dark:text-gray-600">
+                  <MdNavigateNext className="text-xs" />
+                </li>
+                <li>
+                  <Link
+                    href={breadcrumbPostUrl || "#"}
+                    className="flex items-center font-medium text-gray-900 dark:text-white hover:text-primary transition-colors"
+                  >
+                    {breadcrumbPostTitle}
+                  </Link>
+                </li>
+              </>
+            )}
+          </ol>
+        </nav>
+      </div>
 
       <script
         type="application/ld+json"

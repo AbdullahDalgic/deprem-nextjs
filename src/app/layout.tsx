@@ -30,7 +30,7 @@ export default function RootLayout({
   process.env.TZ = "Europe/Istanbul";
 
   return (
-    <html lang="tr">
+    <html lang="tr" suppressHydrationWarning>
       <body className={roboto.className}>
         <link
           rel="search"

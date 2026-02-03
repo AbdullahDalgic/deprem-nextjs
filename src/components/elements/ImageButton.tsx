@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -11,12 +10,10 @@ interface IImageButton {
 
 export default function ImageButton(props: IImageButton) {
   return (
-    <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Link href={props.link} legacyBehavior>
-        <a target="_blank" rel="noreferrer nofollow">
-          <Image src={props.image} alt={props.title} width={25} height={25} />
-        </a>
+    <div className="flex items-center">
+      <Link href={props.link} target="_blank" rel="noreferrer nofollow">
+        <Image src={props.image} alt={props.title} width={25} height={25} />
       </Link>
-    </Box>
+    </div>
   );
 }

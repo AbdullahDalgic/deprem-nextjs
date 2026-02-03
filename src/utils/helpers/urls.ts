@@ -4,16 +4,17 @@ import { INews } from "../interfaces/news";
 import { API_URL, SITE_URL } from "../constants";
 
 export const generateSearchLink = (term: string = "") => {
-  term = term.toLocaleLowerCase("tr");
-  term = term.replace(/ /g, "+");
-  term = term.replace(/ç/g, "c");
-  term = term.replace(/ğ/g, "g");
-  term = term.replace(/ı/g, "i");
-  term = term.replace(/ö/g, "o");
-  term = term.replace(/ş/g, "s");
-  term = term.replace(/ü/g, "u");
-
-  return `/ara?q=${term}`;
+  if (!term || !term.trim()) {
+    return `/ara`;
+  }
+  
+  // Trim ve normalize et
+  term = term.trim();
+  
+  // URL encoding yap (Türkçe karakterler dahil)
+  const encodedTerm = encodeURIComponent(term);
+  
+  return `/ara?q=${encodedTerm}`;
 };
 
 export const generateImageUrl = (imagePath: string) => {

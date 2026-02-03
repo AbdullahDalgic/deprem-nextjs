@@ -14,28 +14,33 @@ type Props = {
   title?: string;
   doFollow?: boolean;
   target?: string;
+  className?: string;
   children?: React.ReactNode;
 };
 
 export default function CustomLink(props: Props) {
-  const { title, image, href, doFollow, target, children } = props;
+  const { title, image, href, doFollow, target, className, children } = props;
   const { src, alt, width, height } = image || {};
 
   return (
-    <Link href={href} legacyBehavior>
-      <a target={target} rel={doFollow ? "" : "noreferrer nofollow"}>
-        {title ??
-          (image?.src ? (
-            <Image
-              src={src!}
-              alt={alt || title || PUBLISHER}
-              width={width || 25}
-              height={height || 25}
-              style={{ width: "auto" }}
-            />
-          ) : null)}
-        {children}
-      </a>
+    <Link
+      href={href}
+      target={target}
+      rel={doFollow ? undefined : "noreferrer nofollow"}
+      className={className}
+      prefetch={true}
+    >
+      {title ??
+        (image?.src ? (
+          <Image
+            src={src!}
+            alt={alt || title || PUBLISHER}
+            width={width || 25}
+            height={height || 25}
+            style={{ width: "auto" }}
+          />
+        ) : null)}
+      {children}
     </Link>
   );
 }

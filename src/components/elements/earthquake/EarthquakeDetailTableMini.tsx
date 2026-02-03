@@ -1,11 +1,4 @@
 import React from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  TableContainer,
-} from "@mui/material";
 import dayjs from "dayjs";
 import Link from "next/link";
 import { FaGoogle, FaYandexInternational } from "react-icons/fa";
@@ -21,113 +14,86 @@ const EarthquakeDetailTableMini = ({
 }: IEarthquakeDetailTableMini) => {
   if (!earthquake) return null;
 
+  const getMagnitudeColor = (magnitude: number) => {
+    if (magnitude >= 5.0) return "bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-400";
+    if (magnitude >= 4.0) return "bg-orange-100 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400";
+    return "bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400";
+  };
+
+  const mapLinks = [
+    {
+      href: `https://www.google.com/maps/search/?api=1&query=${earthquake.lat},${earthquake.lng}`,
+      icon: FaGoogle,
+      label: "Google Maps'te Göster",
+      color: "hover:bg-blue-500 hover:text-white",
+    },
+    {
+      href: `https://yandex.com.tr/maps/?ll=${earthquake.lng},${earthquake.lat}&z=7`,
+      icon: FaYandexInternational,
+      label: "Yandex Maps'te Göster",
+      color: "hover:bg-red-500 hover:text-white",
+    },
+    {
+      href: `https://www.openstreetmap.org/?mlat=${earthquake.lat}&mlon=${earthquake.lng}&zoom=7`,
+      icon: SiOpenstreetmap,
+      label: "OpenStreetMap'te Göster",
+      color: "hover:bg-green-500 hover:text-white",
+    },
+  ];
+
+  const details = [
+    { label: "Deprem Büyüklüğü", value: earthquake.magnitude, isMagnitude: true },
+    { label: "Deprem Derinliği", value: `${earthquake.depth} km` },
+    { label: "Deprem Lokasyonu", value: earthquake.location },
+    { label: "Deprem Tarihi", value: dayjs(earthquake.eventDate).format("DD MMMM YYYY") },
+    { label: "Deprem Saati", value: dayjs(earthquake.eventDate).format("HH:mm") },
+    { label: "Kaynak", value: earthquake.provider },
+    { label: "Enlem", value: earthquake.lat },
+    { label: "Boylam", value: earthquake.lng },
+  ];
+
   return (
-    <TableContainer>
-      <Table size="small">
-        <TableBody>
-          <TableRow>
-            <TableCell component="th" scope="row">
-              <strong>Deprem Büyüklüğü</strong>
-            </TableCell>
-            <TableCell>
-              <strong>{earthquake.magnitude}</strong>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component="th" scope="row">
-              <strong>Deprem Derinliği</strong>
-            </TableCell>
-            <TableCell>{`${earthquake.depth} km`}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component="th" scope="row">
-              <strong>Deprem Lokasyonu</strong>
-            </TableCell>
-            <TableCell>{`${earthquake.location}`}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component="th" scope="row">
-              <strong>Deprem Tarihi</strong>
-            </TableCell>
-            <TableCell>
-              {dayjs(earthquake.eventDate).format("DD MMMM YYYY")}
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component="th" scope="row">
-              <strong>Deprem Saati</strong>
-            </TableCell>
-            <TableCell>{dayjs(earthquake.eventDate).format("HH:mm")}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component="th" scope="row">
-              <strong>Kaynak</strong>
-            </TableCell>
-            <TableCell>{earthquake.provider}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component="th" scope="row">
-              <strong>Enlem</strong>
-            </TableCell>
-            <TableCell>{earthquake.lat}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component="th" scope="row">
-              <strong>Boylam</strong>
-            </TableCell>
-            <TableCell>{earthquake.lng}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component="th" scope="row">
-              <strong>Haritada Göster</strong>
-            </TableCell>
-            <TableCell style={{ display: "flex", gap: 10 }}>
-              {/* google */}
-              <Link
-                href={`https://www.google.com/maps/search/?api=1&query=${earthquake.lat},${earthquake.lng}`}
-                legacyBehavior
-              >
-                <a
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <div className="divide-y divide-gray-200 dark:divide-gray-700">
+        {details.map((detail, index) => (
+          <div key={index} className="px-5 py-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
+            <dt className="text-sm font-semibold text-gray-600 dark:text-gray-400">
+              {detail.label}
+            </dt>
+            <dd className="text-sm font-medium text-gray-900 dark:text-white sm:text-right">
+              {detail.isMagnitude ? (
+                <span className={`inline-flex items-center justify-center px-3 py-1 rounded-lg font-bold text-base ${getMagnitudeColor(detail.value as number)}`}>
+                  {detail.value}
+                </span>
+              ) : (
+                <span className="text-gray-900 dark:text-white">{detail.value}</span>
+              )}
+            </dd>
+          </div>
+        ))}
+        <div className="px-5 py-3.5 bg-gray-50 dark:bg-gray-900/50">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <dt className="text-sm font-semibold text-gray-600 dark:text-gray-400">
+              Haritada Göster
+            </dt>
+            <dd className="flex items-center gap-2">
+              {mapLinks.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.href}
                   target="_blank"
                   rel="noreferrer nofollow"
-                  title="Google Maps'te Göster"
+                  title={link.label}
+                  className={`w-9 h-9 flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 transition-all duration-200 ${link.color} cursor-pointer shadow-sm hover:shadow-md hover:scale-105`}
                 >
-                  <FaGoogle />
-                </a>
-              </Link>
-
-              {/* yandex */}
-              <Link
-                href={`https://yandex.com.tr/maps/?ll=${earthquake.lng},${earthquake.lat}&z=7`}
-                legacyBehavior
-              >
-                <a
-                  target="_blank"
-                  rel="noreferrer nofollow"
-                  title="Yandex Maps'te Göster"
-                >
-                  <FaYandexInternational />
-                </a>
-              </Link>
-
-              {/* openstreetmap */}
-              <Link
-                href={`https://www.openstreetmap.org/?mlat=${earthquake.lat}&mlon=${earthquake.lng}&zoom=7`}
-                legacyBehavior
-              >
-                <a
-                  target="_blank"
-                  rel="noreferrer nofollow"
-                  title="OpenStreetMap'te Göster"
-                >
-                  <SiOpenstreetmap />
-                </a>
-              </Link>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+                  <link.icon className="text-sm" />
+                </Link>
+              ))}
+            </dd>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

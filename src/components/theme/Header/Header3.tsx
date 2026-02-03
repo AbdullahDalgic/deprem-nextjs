@@ -1,4 +1,3 @@
-import { Container } from "@mui/material";
 import Menu from "./Menu";
 import MobileMenu from "./MobileMenu";
 import HeaderTop from "./HeaderTop";
@@ -32,7 +31,7 @@ export default function Header3({
           id="sticky-header"
           className={`tg-header__area ${scroll ? "sticky-menu" : ""}`}
         >
-          <Container maxWidth="lg">
+          <div className="container mx-auto max-w-6xl px-4">
             <Menu
               handleMobileMenuOpen={handleMobileMenuOpen}
               handleSidebarOpen={handleSidebarOpen}
@@ -40,7 +39,7 @@ export default function Header3({
               white
             />
             <MobileMenu handleMobileMenuClose={handleMobileMenuClose} />
-          </Container>
+          </div>
         </div>
       </header>
     </>

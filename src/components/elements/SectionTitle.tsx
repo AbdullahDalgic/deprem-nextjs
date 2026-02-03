@@ -1,4 +1,3 @@
-import { Box, Grid2, Typography } from "@mui/material";
 import Link from "next/link";
 
 interface ISectionTitle {
@@ -9,33 +8,24 @@ interface ISectionTitle {
 
 export default function SectionTitle({ title, link, linkText }: ISectionTitle) {
   return (
-    <Box className="section__title-wrap" sx={{ mb: 2, mt: 1 }}>
-      <Grid2
-        container
-        justifyContent={"space-between"}
-        alignItems={"end"}
-        rowSpacing={0}
-        columnSpacing={5}
-      >
-        <Grid2 size={{ xs: 12, md: 6 }}>
-          <Typography variant="h3" sx={{ mb: 0, fontSize: 35 }}>
+    <div className="section__title-wrap mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="h-1 w-12 bg-primary rounded-full"></div>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
             {title}
-          </Typography>
-        </Grid2>
+          </h2>
+        </div>
         {linkText && (
-          <Grid2
-            size={{ xs: 12, md: 6 }}
-            display={"flex"}
-            justifyContent={"flex-end"}
+          <Link 
+            href={link || "#"}
+            className="inline-flex items-center gap-2 text-primary hover:text-primary-700 dark:hover:text-primary-400 transition-colors font-semibold group"
           >
-            <div className="section__read-more">
-              <Link href={link || "#"}>
-                {linkText} <i className="far fa-long-arrow-right" />
-              </Link>
-            </div>
-          </Grid2>
+            <span>{linkText}</span>
+            <i className="far fa-arrow-right group-hover:translate-x-1 transition-transform" />
+          </Link>
         )}
-      </Grid2>
-    </Box>
+      </div>
+    </div>
   );
 }
