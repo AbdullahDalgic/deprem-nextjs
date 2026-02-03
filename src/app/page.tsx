@@ -67,9 +67,6 @@ export default async function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.04),transparent_70%)] animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
 
-        {/* Pattern Overlay - Subtle */}
-        <div className="absolute inset-0 bg-[url('/assets/img/pattern.svg')] opacity-[0.08] dark:opacity-[0.05]"></div>
-
         {/* Animated Grid Pattern - Subtle matrix style */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
 
@@ -135,10 +132,21 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* Bottom Wave Decoration */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg className="w-full h-20 md:h-32" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,60 C240,100 480,20 720,40 C960,60 1200,80 1440,40 L1440,120 L0,120 Z" fill="white" className="dark:fill-gray-950" fillOpacity="1"></path>
+        {/* Bottom Wave Decoration - Mobile Optimized */}
+        <div className="absolute bottom-0 left-0 right-0 overflow-hidden">
+          <svg 
+            className="w-full h-8 sm:h-12 md:h-20 lg:h-28" 
+            viewBox="0 0 1440 120" 
+            preserveAspectRatio="none"
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Simple, smooth wave - optimized for mobile */}
+            <path 
+              d="M0,100 Q360,70 720,85 Q1080,100 1440,75 L1440,120 L0,120 Z" 
+              fill="white" 
+              className="dark:fill-gray-950"
+            />
           </svg>
         </div>
       </section>
