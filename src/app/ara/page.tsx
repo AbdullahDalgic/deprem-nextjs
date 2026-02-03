@@ -46,26 +46,30 @@ export default async function Search({ searchParams }: SearchPageProps) {
   // Backend'in beklediği format: "term1+term2+term3"
   const apiQuery = decodedQuery ? decodedQuery.trim().replace(/\s+/g, "+") : "";
 
-  // Eğer query boşsa, boş sonuç döndür
+  // Eğer query boşsa, arama kutusu göster
   if (!apiQuery || !apiQuery.trim()) {
+    const emptyData: IPagination<IEarthquake> = {
+      data: [],
+      current_page: 1,
+      last_page: 1,
+      per_page: 10,
+      from: 0,
+      to: 0,
+      total: 0,
+    };
+    
     return (
       <>
         <div className="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
           <Breadcrumb
-            breadcrumbCategory="Arama Sonuçları"
+            breadcrumbCategory="Arama"
             breadcrumbCategoryLink="/ara"
             breadcrumbPostTitle=""
             breadcrumbPostUrl="/ara"
           />
         </div>
         <section className="py-8 md:py-12 bg-white dark:bg-gray-950">
-          <div className="container mx-auto max-w-6xl px-4">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-12 text-center">
-              <p className="text-gray-600 dark:text-gray-400">
-                Lütfen arama terimi girin.
-              </p>
-            </div>
-          </div>
+          <SearchPage data={emptyData} />
         </section>
       </>
     );
