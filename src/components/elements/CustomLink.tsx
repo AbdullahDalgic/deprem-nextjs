@@ -32,7 +32,14 @@ export default function CustomLink(props: Props) {
     >
       {title ??
         (image?.src ? (
-          <Image
+          // <Image
+          //   src={src!}
+          //   alt={alt || title || PUBLISHER}
+          //   width={width || 25}
+          //   height={height || 25}
+          //   style={{ width: "auto" }}
+          // />
+          <img
             src={src!}
             alt={alt || title || PUBLISHER}
             width={width || 25}

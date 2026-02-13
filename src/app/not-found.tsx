@@ -18,12 +18,19 @@ export default function NotFound() {
       <div className="max-w-2xl w-full text-center">
         <div className="mb-8 flex justify-center">
           <div className="relative w-64 h-64 sm:w-80 sm:h-80">
-            <Image
+            {/* <Image
               src="/assets/img/others/404.png"
               alt="404 Sayfa Bulunamadı"
               fill
               className="object-contain"
               priority
+            /> */}
+            <img
+              src="/assets/img/others/404.png"
+              alt="404 Sayfa Bulunamadı"
+              width={300}
+              height={300}
+              className="object-contain"
             />
           </div>
         </div>

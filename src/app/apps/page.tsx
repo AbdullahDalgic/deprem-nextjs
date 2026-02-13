@@ -193,7 +193,7 @@ export default function Apps() {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600">
                           <Zoom>
-                            <Image
+                            {/* <Image
                               src="/assets/img/apps/extension/extension-img-1.png"
                               width={600}
                               height={600}
@@ -201,12 +201,19 @@ export default function Apps() {
                               sizes="(max-width: 768px) 100vw, 33vw"
                               alt="Deprem Wiki Chrome Eklentisi - Ekran Görüntüsü 1"
                               className="w-full h-auto object-cover cursor-zoom-in"
+                            /> */}
+                            <img
+                              src="/assets/img/apps/extension/extension-img-1.png"
+                              width={600}
+                              height={600}
+                              alt="Deprem Wiki Chrome Eklentisi - Ekran Görüntüsü 1"
+                              className="w-full h-auto object-cover cursor-zoom-in"
                             />
                           </Zoom>
                         </div>
                         <div className="relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600">
                           <Zoom>
-                            <Image
+                            {/* <Image
                               src="/assets/img/apps/extension/extension-img-2.png"
                               width={600}
                               height={600}
@@ -214,17 +221,31 @@ export default function Apps() {
                               sizes="(max-width: 768px) 100vw, 33vw"
                               alt="Deprem Wiki Chrome Eklentisi - Ekran Görüntüsü 2"
                               className="w-full h-auto object-cover cursor-zoom-in"
+                            /> */}
+                            <img
+                              src="/assets/img/apps/extension/extension-img-2.png"
+                              width={600}
+                              height={600}
+                              alt="Deprem Wiki Chrome Eklentisi - Ekran Görüntüsü 2"
+                              className="w-full h-auto object-cover cursor-zoom-in"
                             />
                           </Zoom>
                         </div>
                         <div className="relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600">
                           <Zoom>
-                            <Image
+                            {/* <Image
                               src="/assets/img/apps/extension/extension-img-3.png"
                               width={400}
                               height={400}
                               loading="lazy"
                               sizes="(max-width: 768px) 100vw, 33vw"
+                              alt="Deprem Wiki Chrome Eklentisi - Ekran Görüntüsü 3"
+                              className="w-full h-auto object-cover cursor-zoom-in"
+                            /> */}
+                            <img
+                              src="/assets/img/apps/extension/extension-img-3.png"
+                              width={400}
+                              height={400}
                               alt="Deprem Wiki Chrome Eklentisi - Ekran Görüntüsü 3"
                               className="w-full h-auto object-cover cursor-zoom-in"
                             />

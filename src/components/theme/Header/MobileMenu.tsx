@@ -66,20 +66,35 @@ const MobileMenu = ({ handleMobileMenuClose }: IMobileMenu) => {
           <div className="flex items-center justify-between px-6 py-4">
             {/* Logo */}
             <Link href="/" onClick={handleMobileMenuClose} className="flex items-center gap-2">
-              <Image
+              {/* <Image
                 src={generateAssetsUrl(`/assets/img/logo/logo.png`)}
                 alt="Logo"
                 width={40}
                 height={40}
                 priority={false}
                 className="w-auto h-10 dark:hidden"
+              /> */}
+              <img
+                src={generateAssetsUrl(`/assets/img/logo/logo.png`)}
+                alt="Logo"
+                width={40}
+                height={40}
+                className="w-auto h-10 dark:hidden"
               />
-              <Image
+
+              {/* <Image
                 src={generateAssetsUrl(`/assets/img/logo/w_logo.png`)}
                 alt="Logo"
                 width={40}
                 height={40}
                 priority={false}
+                className="w-auto h-10 hidden dark:block"
+              /> */}
+              <img
+                src={generateAssetsUrl(`/assets/img/logo/w_logo.png`)}
+                alt="Logo"
+                width={40}
+                height={40}
                 className="w-auto h-10 hidden dark:block"
               />
               <span className="text-lg font-bold text-gray-900 dark:text-white">
@@ -138,11 +153,10 @@ const MobileMenu = ({ handleMobileMenuClose }: IMobileMenu) => {
                   <Link
                     href={item.href}
                     onClick={handleMobileMenuClose}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
-                      active
-                        ? "bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-400 font-semibold"
-                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                    }`}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${active
+                      ? "bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-400 font-semibold"
+                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      }`}
                   >
                     <Icon className="w-5 h-5 flex-shrink-0" />
                     <span className="text-base">{item.label}</span>
@@ -175,7 +189,14 @@ const MobileMenu = ({ handleMobileMenuClose }: IMobileMenu) => {
                     {Icon ? (
                       <Icon className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-primary dark:group-hover:text-primary-400 transition-colors" />
                     ) : (
-                      <Image
+                      // <Image
+                      //   src={app.image}
+                      //   alt={app.title}
+                      //   width={24}
+                      //   height={24}
+                      //   className="w-6 h-6 object-contain"
+                      // />
+                      <img
                         src={app.image}
                         alt={app.title}
                         width={24}
@@ -218,7 +239,14 @@ const MobileMenu = ({ handleMobileMenuClose }: IMobileMenu) => {
                     {Icon ? (
                       <Icon className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-white transition-colors" />
                     ) : (
-                      <Image
+                      // <Image
+                      //   src={social.image}
+                      //   alt={social.title}
+                      //   width={24}
+                      //   height={24}
+                      //   className="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert transition-all"
+                      // />
+                      <img
                         src={social.image}
                         alt={social.title}
                         width={24}

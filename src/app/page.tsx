@@ -37,7 +37,7 @@ export default async function Home() {
       <section className="relative overflow-hidden min-h-[600px] md:min-h-[700px]">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <Image
+          {/* <Image
             src="/assets/img/bg/hero-3.jpg"
             alt="Earth from space"
             fill
@@ -45,6 +45,11 @@ export default async function Home() {
             priority
             quality={90}
             sizes="100vw"
+          /> */}
+          <img
+            src="/assets/img/bg/hero-3.jpg"
+            alt="Earth from space"
+            className="object-cover"
           />
           {/* Image Overlay for better contrast */}
           <div className="absolute inset-0 bg-black/30 dark:bg-black/40"></div>
@@ -134,17 +139,17 @@ export default async function Home() {
 
         {/* Bottom Wave Decoration - Mobile Optimized */}
         <div className="absolute bottom-0 left-0 right-0 overflow-hidden">
-          <svg 
-            className="w-full h-8 sm:h-12 md:h-20 lg:h-28" 
-            viewBox="0 0 1440 120" 
+          <svg
+            className="w-full h-8 sm:h-12 md:h-20 lg:h-28"
+            viewBox="0 0 1440 120"
             preserveAspectRatio="none"
-            fill="none" 
+            fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             {/* Simple, smooth wave - optimized for mobile */}
-            <path 
-              d="M0,100 Q360,70 720,85 Q1080,100 1440,75 L1440,120 L0,120 Z" 
-              fill="white" 
+            <path
+              d="M0,100 Q360,70 720,85 Q1080,100 1440,75 L1440,120 L0,120 Z"
+              fill="white"
               className="dark:fill-gray-950"
             />
           </svg>

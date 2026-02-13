@@ -188,7 +188,7 @@ export default async function NewsDetail(props: INewsPage) {
                   <div className="relative w-full bg-gray-100 dark:bg-gray-700 overflow-hidden cursor-zoom-in">
                     <div className="max-h-96 md:max-h-[400px] lg:max-h-[450px] overflow-hidden">
                       <Zoom>
-                        <Image
+                        {/* <Image
                           src={generateImageUrl(data?.image_map)}
                           alt={data.title}
                           width={1200}
@@ -196,6 +196,13 @@ export default async function NewsDetail(props: INewsPage) {
                           className="w-full h-auto object-cover"
                           priority
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 800px"
+                        /> */}
+                        <img
+                          src={generateImageUrl(data?.image_map)}
+                          alt={data.title}
+                          width={1200}
+                          height={600}
+                          className="w-full h-auto object-cover"
                         />
                       </Zoom>
                     </div>

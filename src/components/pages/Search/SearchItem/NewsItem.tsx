@@ -19,13 +19,20 @@ const NewsItem = ({ news }: ISearchItem) => {
     >
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700">
-          <Image
+          {/* <Image
             src={generateImageUrl(`${news?.image_map}`)}
             alt={news?.title}
             width={64}
             height={64}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
             loading="lazy"
+          /> */}
+          <img
+            src={generateImageUrl(`${news?.image_map}`)}
+            alt={news?.title}
+            width={64}
+            height={64}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
           />
         </div>
         <div className="flex-1 min-w-0">

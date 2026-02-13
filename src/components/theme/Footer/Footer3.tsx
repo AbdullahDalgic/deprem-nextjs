@@ -32,7 +32,7 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
                 title="home"
               >
                 <div className="flex items-center gap-3">
-                  <Image
+                  {/* <Image
                     src={`/assets/img/logo/${
                       logoWhite ? "logo" : "w_logo"
                     }.png`}
@@ -40,6 +40,13 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
                     width={50}
                     height={50}
                     priority={false}
+                    className="w-auto"
+                  /> */}
+                  <img
+                    src={`/assets/img/logo/${logoWhite ? "logo" : "w_logo"
+                      }.png`}
+                    alt="Logo"
+                    style={{ width: "50px", height: "50px" }}
                     className="w-auto"
                   />
                   <h1 className="text-white text-xl md:text-2xl font-bold">

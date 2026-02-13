@@ -61,12 +61,19 @@ const LastNewsRightBar = () => {
                 className="flex gap-3 p-3 group hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
               >
                 <div className="relative w-16 h-16 flex-shrink-0 rounded-md overflow-hidden bg-gray-100 dark:bg-gray-700">
-                  <Image
+                  {/* <Image
                     src={generateImageUrl(`${item?.image_map}`)}
                     alt={item?.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-200"
                     loading="lazy"
+                  /> */}
+                  <img
+                    src={generateImageUrl(`${item?.image_map}`)}
+                    alt={item?.title}
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
                   />
                 </div>
                 <div className="flex-1 min-w-0 flex flex-col justify-center gap-0.5">

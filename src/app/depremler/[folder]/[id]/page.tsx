@@ -191,7 +191,7 @@ export default async function EarthquakeData({ params }: IEarthquakePage) {
                     <div className="relative w-full bg-gray-100 dark:bg-gray-700 overflow-hidden cursor-zoom-in">
                       <div className="max-h-96 md:max-h-[400px] lg:max-h-[450px] overflow-hidden">
                         <Zoom>
-                          <Image
+                          {/* <Image
                             src={generateImageUrl((data as any).map_image_path)}
                             alt={`${data.location} Deprem Haritası`}
                             width={1200}
@@ -199,6 +199,11 @@ export default async function EarthquakeData({ params }: IEarthquakePage) {
                             className="w-full h-auto object-cover"
                             priority
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 800px"
+                          /> */}
+                          <img
+                            src={generateImageUrl((data as any).map_image_path)}
+                            alt={`${data.location} Deprem Haritası`}
+                            className="w-full h-auto object-cover"
                           />
                         </Zoom>
                       </div>

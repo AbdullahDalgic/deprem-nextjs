@@ -21,12 +21,19 @@ export default function Error({
       <div className="max-w-2xl w-full text-center">
         <div className="mb-8 flex justify-center">
           <div className="relative w-64 h-64 sm:w-80 sm:h-80">
-            <Image
+            {/* <Image
               src="/assets/img/others/500.svg"
               alt="Hata"
               fill
               className="object-contain"
               priority
+            /> */}
+            <img
+              src="/assets/img/others/500.svg"
+              alt="Hata"
+              width={300}
+              height={300}
+              className="object-contain"
             />
           </div>
         </div>
