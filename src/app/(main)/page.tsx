@@ -37,19 +37,14 @@ export default async function Home() {
       <section className="relative overflow-hidden min-h-[600px] md:min-h-[700px]">
         {/* Background Image */}
         <div className="absolute inset-0">
-          {/* <Image
+          <Image
             src="/assets/img/bg/hero-3.jpg"
             alt="Earth from space"
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
             quality={90}
             sizes="100vw"
-          /> */}
-          <img
-            src="/assets/img/bg/hero-3.jpg"
-            alt="Earth from space"
-            className="object-cover"
           />
           {/* Image Overlay for better contrast */}
           <div className="absolute inset-0 bg-black/30 dark:bg-black/40"></div>
