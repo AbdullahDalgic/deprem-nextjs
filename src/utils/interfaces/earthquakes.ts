@@ -1,6 +1,7 @@
 import { INews } from "./news";
 
 export interface IEarthquake {
+  id: number;
   eventId: number;
   location: string;
   provider: string;

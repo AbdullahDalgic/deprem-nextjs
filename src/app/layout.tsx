@@ -1,6 +1,7 @@
 import { Roboto } from "next/font/google";
 import Layout from "@/components/theme/Layout";
 import Hydration from "@/components/Hydration";
+import Providers from "@/components/Providers";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
@@ -39,9 +40,9 @@ export default function RootLayout({
           href="/opensearch.xml"
         />
 
-        <Layout footerClass="black-bg" logoWhite={true}>
+        <Providers>
           {children}
-        </Layout>
+        </Providers>
         <Hydration />
       </body>
     </html>

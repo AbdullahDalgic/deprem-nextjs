@@ -7,6 +7,22 @@ import UAParser from "ua-parser-js";
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl || {};
 
+  // Admin Koruması
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+    const token = request.cookies.get("auth-token")?.value;
+    if (!token) {
+      return NextResponse.redirect(new URL("/auth/login", request.url));
+    }
+  }
+
+  // Login sayfası koruması (Zaten giriş yapmışsa admin'e at)
+  if (pathname === "/auth/login") {
+    const token = request.cookies.get("auth-token")?.value;
+    if (token) {
+      return NextResponse.redirect(new URL("/admin", request.url));
+    }
+  }
+
   if (pathname.startsWith("/deprem/") || pathname.startsWith("/depremler/")) {
     const id = pathname.split("/")[2];
     if (id == Number(id).toString()) {
