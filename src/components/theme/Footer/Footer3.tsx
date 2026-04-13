@@ -173,13 +173,13 @@ export default function Footer3({ footerClass, logoWhite }: IFooter3) {
               <p className="text-xs text-gray-500 dark:text-gray-600">
                 Bu uygulama{" "}
                 <Link
-                  href={"https://abdullahdalgic.com.tr"}
+                  href={"https://timuron.com"}
                   target="_blank"
-                  title="Abdullah Dalgıç | Yazılım Geliştirme & Danışmanlık"
+                  title="Timuron.com"
                   rel="dofollow"
                   className="text-gray-400 dark:text-gray-500 hover:text-primary-400 dark:hover:text-primary-500 transition-colors font-medium"
                 >
-                  Abdullah Dalgıç | Yazılım Geliştirme & Danışmanlık
+                  Timuron.com
                 </Link>{" "}
                 tarafından hazırlandı.
               </p>
